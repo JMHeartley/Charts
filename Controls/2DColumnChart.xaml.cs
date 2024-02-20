@@ -109,31 +109,6 @@ namespace Controls
             var yAxisValue = origin.Y;
             while (yAxisValue >= yAxisEndPoint.Y)
             {
-                // for illustration
-                //Ellipse lEllipse = new Ellipse()
-                //{
-                //    Fill = Brushes.Red,
-                //    Width = 10,
-                //    Height = 10,
-                //};
-
-                //Ellipse rEllipse = new Ellipse()
-                //{
-                //    Fill = Brushes.Blue,
-                //    Width = 10,
-                //    Height = 10,
-                //};
-
-                //mainCanvas.Children.Add(lEllipse);
-                //mainCanvas.Children.Add(rEllipse);
-
-                //Canvas.SetLeft(lEllipse, origin.X - 5);
-                //Canvas.SetTop(lEllipse, yAxisValue - 5);
-
-                //Canvas.SetLeft(rEllipse, xAxisEndPoint.X - 5);
-                //Canvas.SetTop(rEllipse, yAxisValue - 5);
-
-
                 var yLine = new Line
                 {
                     Stroke = Brushes.LightGray,
