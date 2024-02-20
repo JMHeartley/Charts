@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace Charts._2DPie
+namespace Components.Models
 {
     public class Category
     {

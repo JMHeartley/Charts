@@ -1,4 +1,5 @@
 ﻿using Charts._2DPie;
+using Components.Models;
 using System.Windows;
 
 namespace _2DPieChart

@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Charts\Charts.csproj" />
+    <ProjectReference Include="..\Components\Components.csproj" />
   </ItemGroup>
 
 </Project>
