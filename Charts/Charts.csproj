@@ -47,9 +47,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Components\Components.csproj">
+    <ProjectReference Include="..\Controls\Controls.csproj">
       <Project>{fb762767-3d1c-4d98-bf89-cc38d69eabbd}</Project>
-      <Name>Components</Name>
+      <Name>Controls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

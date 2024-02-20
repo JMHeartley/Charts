@@ -1,4 +1,4 @@
-﻿using Components.Models;
+﻿using Controls.Models;
 using System.Windows;
 
 namespace _2DPieChart

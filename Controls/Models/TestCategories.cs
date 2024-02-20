@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media;
 
-namespace Components.Models
+namespace Controls.Models
 {
     public static class TestCategories
     {

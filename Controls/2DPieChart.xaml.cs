@@ -1,4 +1,4 @@
-﻿using Components.Models;
+﻿using Controls.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
-namespace Components
+namespace Controls
 {
     /// <summary>
     ///     Interaction logic for _2DPieChart.xaml

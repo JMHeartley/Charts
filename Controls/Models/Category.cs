@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace Components.Models
+namespace Controls.Models
 {
     public class Category
     {
