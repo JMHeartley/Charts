@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:_2DPieChart"
+        xmlns:pie="clr-namespace:Charts._2DPie;assembly=Charts"
         mc:Ignorable="d"
         Title="2D Pie Chart"
         Height="720"
@@ -24,7 +24,7 @@
                       HorizontalScrollBarVisibility="Hidden">
             <ItemsControl x:Name="detailsItemsControl">
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type local:Category}">
+                    <DataTemplate DataType="{x:Type pie:Category}">
                         <StackPanel Orientation="Horizontal"
                                     Margin="10">
                             <Rectangle Width="20"
