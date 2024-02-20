@@ -15,6 +15,9 @@ namespace Controls
         public static readonly DependencyProperty ItemsProperty =
             DependencyProperty.Register(nameof(Items), typeof(List<ColumnItem>), typeof(_2DColumnChart));
 
+        public static readonly DependencyProperty ColumnBrushProperty =
+            DependencyProperty.Register(nameof(ColumnBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
+
         public static readonly DependencyProperty ForegroundBrushProperty =
             DependencyProperty.Register(nameof(ForegroundBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
 
@@ -26,6 +29,7 @@ namespace Controls
 
         public _2DColumnChart()
         {
+            ColumnBrush = Brushes.Gold;
             ForegroundBrush = Brushes.Black;
             StrokeBrush = Brushes.LightGray;
             StrokeThickness = 1;
@@ -47,6 +51,12 @@ namespace Controls
 
                 Paint();
             }
+        }
+
+        public SolidColorBrush ColumnBrush
+        {
+            get => (SolidColorBrush)GetValue(ColumnBrushProperty);
+            set => SetValue(ColumnBrushProperty, value);
         }
 
         public SolidColorBrush ForegroundBrush
@@ -141,7 +151,7 @@ namespace Controls
             {
                 var block = new Rectangle
                 {
-                    Fill = Brushes.Gold,
+                    Fill = ColumnBrush,
                     Width = blockWidth,
                     Height = item.Value
                 };
