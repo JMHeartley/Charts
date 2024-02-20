@@ -18,9 +18,13 @@ namespace Controls
         public static readonly DependencyProperty ForegroundBrushProperty =
             DependencyProperty.Register(nameof(ForegroundBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
 
+        public static readonly DependencyProperty StrokeBrushProperty =
+            DependencyProperty.Register(nameof(StrokeBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
+
         public _2DColumnChart()
         {
             ForegroundBrush = Brushes.Black;
+            StrokeBrush = Brushes.LightGray;
 
             InitializeComponent();
         }
@@ -47,6 +51,12 @@ namespace Controls
             set => SetValue(ForegroundBrushProperty, value);
         }
 
+        public SolidColorBrush StrokeBrush
+        {
+            get => (SolidColorBrush)GetValue(StrokeBrushProperty);
+            set => SetValue(StrokeBrushProperty, value);
+        }
+
         private void Paint()
         {
             float chartWidth = 1200,
@@ -64,7 +74,7 @@ namespace Controls
 
             var yAxisStartLine = new Line
             {
-                Stroke = Brushes.LightGray,
+                Stroke = StrokeBrush,
                 StrokeThickness = 1,
                 X1 = yAxisEndPoint.X,
                 Y1 = yAxisEndPoint.Y,
@@ -75,7 +85,7 @@ namespace Controls
 
             var yAxisEndLine = new Line
             {
-                Stroke = Brushes.LightGray,
+                Stroke = StrokeBrush,
                 StrokeThickness = 1,
                 X1 = xAxisEndPoint.X,
                 Y1 = xAxisEndPoint.Y,
@@ -90,7 +100,7 @@ namespace Controls
             {
                 var yLine = new Line
                 {
-                    Stroke = Brushes.LightGray,
+                    Stroke = StrokeBrush,
                     StrokeThickness = 1,
                     X1 = origin.X,
                     Y1 = yAxisValue,
