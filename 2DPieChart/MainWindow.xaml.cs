@@ -1,5 +1,4 @@
-﻿using Charts._2DPie;
-using Components.Models;
+﻿using Components.Models;
 using System.Windows;
 
 namespace _2DPieChart
@@ -13,22 +12,7 @@ namespace _2DPieChart
         {
             InitializeComponent();
 
-            const float pieWidth = 650;
-            const float pieHeight = 650;
-
-            mainCanvas.Width = pieWidth;
-            mainCanvas.Height = pieHeight;
-
-            var categories = TestCategories.Case6;
-
-            DataContext = categories;
-
-            var _2dPie = new _2DPie();
-            var uiElements = _2dPie.Create(pieWidth, pieHeight, categories);
-            foreach (var uiElement in uiElements)
-            {
-                mainCanvas.Children.Add(uiElement);
-            }
+            PieChart.Categories = TestCategories.Case6;
         }
     }
 }

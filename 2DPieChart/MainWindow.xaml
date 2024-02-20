@@ -3,53 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:componentModels="clr-namespace:Components.Models;assembly=Components"
+        xmlns:components="clr-namespace:Components;assembly=Components"
         mc:Ignorable="d"
         Title="2D Pie Chart"
         Height="720"
         Width="1280"
         WindowStartupLocation="CenterScreen"
         WindowState="Normal">
-    <StackPanel Orientation="Horizontal"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-        <Canvas x:Name="mainCanvas"
-                Margin="20,0" />
-
-        <ScrollViewer Margin="20,0"
-                      Padding="10"
-                      VerticalAlignment="Center"
-                      VerticalScrollBarVisibility="Auto"
-                      HorizontalScrollBarVisibility="Hidden">
-            <ItemsControl ItemsSource="{Binding}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type componentModels:Category}">
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="10">
-                            <Rectangle Width="20"
-                                       Height="20"
-                                       Fill="{Binding ColorBrush}"
-                                       Margin="0,0,5,0"
-                                       VerticalAlignment="Center" />
-
-                            <TextBlock Text="{Binding Title}"
-                                       FontSize="20"
-                                       VerticalAlignment="Center" />
-
-                            <TextBlock Text="{Binding Percentage}"
-                                       Foreground="{Binding ColorBrush}"
-                                       FontSize="20"
-                                       Margin="20,0,0,0"
-                                       VerticalAlignment="Center" />
-
-                            <TextBlock Text="%"
-                                       Foreground="{Binding ColorBrush}"
-                                       FontSize="20"
-                                       VerticalAlignment="Center" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </ScrollViewer>
-    </StackPanel>
+    <components:_2DPieChart x:Name="PieChart" />
 </Window>
