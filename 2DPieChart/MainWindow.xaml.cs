@@ -20,7 +20,7 @@ namespace _2DPieChart
 
             var categories = TestCategories.Case6;
 
-            detailsItemsControl.ItemsSource = categories;
+            DataContext = categories;
 
             var _2dPie = new _2DPie();
             var uiElements = _2dPie.Create(pieWidth, pieHeight, categories);

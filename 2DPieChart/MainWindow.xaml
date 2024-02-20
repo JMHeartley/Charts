@@ -22,7 +22,7 @@
                       VerticalAlignment="Center"
                       VerticalScrollBarVisibility="Auto"
                       HorizontalScrollBarVisibility="Hidden">
-            <ItemsControl x:Name="detailsItemsControl">
+            <ItemsControl ItemsSource="{Binding}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate DataType="{x:Type pie:Category}">
                         <StackPanel Orientation="Horizontal"
