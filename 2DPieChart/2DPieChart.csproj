@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Charts\Charts.csproj" />
     <ProjectReference Include="..\Controls\Controls.csproj" />
   </ItemGroup>
 
