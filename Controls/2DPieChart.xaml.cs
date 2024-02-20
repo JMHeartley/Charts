@@ -37,8 +37,8 @@ namespace Controls
                 const float pieWidth = 650;
                 const float pieHeight = 650;
 
-                mainCanvas.Width = pieWidth;
-                mainCanvas.Height = pieHeight;
+                MainCanvas.Width = pieWidth;
+                MainCanvas.Height = pieHeight;
 
                 CreateChart(pieWidth, pieHeight);
             }
@@ -93,7 +93,7 @@ namespace Controls
                     Fill = category.ColorBrush,
                     Data = pathGeometry
                 };
-                mainCanvas.Children.Add(path);
+                MainCanvas.Children.Add(path);
 
                 previousAngle = angle;
 
@@ -118,8 +118,8 @@ namespace Controls
                     StrokeThickness = 5
                 };
 
-                mainCanvas.Children.Add(outline1);
-                mainCanvas.Children.Add(outline2);
+                MainCanvas.Children.Add(outline1);
+                MainCanvas.Children.Add(outline2);
             }
         }
     }

@@ -12,7 +12,7 @@
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
 
-        <Canvas x:Name="mainCanvas"
+        <Canvas x:Name="MainCanvas"
                 Margin="20,0" />
 
         <ScrollViewer Margin="20,0"
