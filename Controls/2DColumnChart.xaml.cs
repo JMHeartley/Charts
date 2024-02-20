@@ -36,7 +36,6 @@ namespace Controls
             }
         }
 
-
         private void Paint()
         {
             float chartWidth = 1200,
