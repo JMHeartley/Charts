@@ -12,6 +12,6 @@
         WindowState="Normal">
     <Grid HorizontalAlignment="Center"
           VerticalAlignment="Center">
-        <Canvas x:Name="mainCanvas" />
+        <Canvas x:Name="MainCanvas" />
     </Grid>
 </Window>

@@ -82,8 +82,8 @@ namespace _2DColumnChart
                       yAxisInterval = 100,
                       blockWidth = 70,
                       blockMargin = 25;
-                mainCanvas.Width = chartWidth;
-                mainCanvas.Height = chartHeight;
+                MainCanvas.Width = chartWidth;
+                MainCanvas.Height = chartHeight;
 
                 var yAxisEndPoint = new Point(axisMargin, axisMargin);
                 var origin = new Point(axisMargin, chartHeight - axisMargin);
@@ -181,7 +181,7 @@ namespace _2DColumnChart
                         X2 = xAxisEndPoint.X,
                         Y2 = yAxisValue
                     };
-                    mainCanvas.Children.Add(yLine);
+                    MainCanvas.Children.Add(yLine);
 
                     var yAxisTextBlock = new TextBlock
                     {
@@ -189,7 +189,7 @@ namespace _2DColumnChart
                         Foreground = Brushes.Black,
                         FontSize = 16
                     };
-                    mainCanvas.Children.Add(yAxisTextBlock);
+                    MainCanvas.Children.Add(yAxisTextBlock);
 
                     Canvas.SetLeft(yAxisTextBlock, origin.X - 35);
                     Canvas.SetTop(yAxisTextBlock, yAxisValue - 12.5);
@@ -211,7 +211,7 @@ namespace _2DColumnChart
                         Height = item.Value
                     };
 
-                    mainCanvas.Children.Add(block);
+                    MainCanvas.Children.Add(block);
                     Canvas.SetLeft(block, margin);
                     Canvas.SetTop(block, origin.Y - block.Height);
 
@@ -221,7 +221,7 @@ namespace _2DColumnChart
                         FontSize = 16,
                         Foreground = Brushes.Black
                     };
-                    mainCanvas.Children.Add(blockHeader);
+                    MainCanvas.Children.Add(blockHeader);
                     Canvas.SetLeft(blockHeader, margin + 10);
                     Canvas.SetTop(blockHeader, origin.Y + 5);
 
