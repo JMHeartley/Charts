@@ -17,56 +17,7 @@ namespace _2DColumnChart
         {
             InitializeComponent();
 
-            Items = new List<ColumnItem>
-            {
-                // test 01
-                //new Item(){Header= "Item1", Value = 266},
-                //new Item(){Header= "Item2", Value = 133},
-                //new Item(){Header= "Item3", Value = 222},
-                //new Item(){Header= "Item4", Value = 366},
-                //new Item(){Header= "Item5", Value = 111},
-                //new Item(){Header= "Item6", Value = 377},
-                //new Item(){Header= "Item7", Value = 444},
-                //new Item(){Header= "Item8", Value = 366},
-                //new Item(){Header= "Item9", Value = 288},
-                //new Item(){Header= "Item10", Value = 455},
-
-                // test 02
-                //new Item(){Header= "Item1", Value = 166},
-                //new Item(){Header= "Item2", Value = 433},
-                //new Item(){Header= "Item3", Value = 322},
-                //new Item(){Header= "Item4", Value = 166},
-                //new Item(){Header= "Item5", Value = 21},
-                //new Item(){Header= "Item6", Value = 277},
-                //new Item(){Header= "Item7", Value = 44},
-                //new Item(){Header= "Item8", Value = 166},
-                //new Item(){Header= "Item9", Value = 288},
-                //new Item(){Header= "Item10", Value = 55},
-
-                // test 03
-                //new Item(){Header= "Item1", Value = 66},
-                //new Item(){Header= "Item2", Value = 300},
-                //new Item(){Header= "Item3", Value = 122},
-                //new Item(){Header= "Item4", Value = 200},
-                //new Item(){Header= "Item5", Value = 411},
-                //new Item(){Header= "Item6", Value = 377},
-                //new Item(){Header= "Item7", Value = 144},
-                //new Item(){Header= "Item8", Value = 366},
-                //new Item(){Header= "Item9", Value = 288},
-                //new Item(){Header= "Item10", Value = 155},
-
-                // test 04
-                new ColumnItem { Header = "Item1", Value = 101 },
-                new ColumnItem { Header = "Item2", Value = 208 },
-                new ColumnItem { Header = "Item3", Value = 75 },
-                new ColumnItem { Header = "Item4", Value = 135 },
-                new ColumnItem { Header = "Item5", Value = 300 },
-                new ColumnItem { Header = "Item6", Value = 400 },
-                new ColumnItem { Header = "Item7", Value = 360 },
-                new ColumnItem { Header = "Item8", Value = 499 },
-                new ColumnItem { Header = "Item9", Value = 233 },
-                new ColumnItem { Header = "Item10", Value = 122 }
-            };
+            Items = TestColumnItems.Case4;
 
             Paint();
         }
