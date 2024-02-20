@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2DPieChart"
         mc:Ignorable="d"
-        Title="2D Pie Chart" 
-        Height="720" 
+        Title="2D Pie Chart"
+        Height="720"
         Width="1280"
         WindowStartupLocation="CenterScreen"
         WindowState="Normal">
@@ -14,8 +14,8 @@
                 Orientation="Horizontal"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
-        <Canvas x:Name="mainCanvas" 
-                Margin="20,0"/>
+        <Canvas x:Name="mainCanvas"
+                Margin="20,0" />
 
         <ScrollViewer Margin="20,0"
                       Padding="10"
@@ -31,22 +31,22 @@
                                        Height="20"
                                        Fill="{Binding ColorBrush}"
                                        Margin="0,0,5,0"
-                                       VerticalAlignment="Center"/>
+                                       VerticalAlignment="Center" />
 
                             <TextBlock Text="{Binding Title}"
                                        FontSize="20"
-                                       VerticalAlignment="Center"/>
+                                       VerticalAlignment="Center" />
 
                             <TextBlock Text="{Binding Percentage}"
                                        Foreground="{Binding ColorBrush}"
                                        FontSize="20"
                                        Margin="20,0,0,0"
-                                       VerticalAlignment="Center"/>
-                            
+                                       VerticalAlignment="Center" />
+
                             <TextBlock Text="%"
                                        Foreground="{Binding ColorBrush}"
                                        FontSize="20"
-                                       VerticalAlignment="Center"/>
+                                       VerticalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
