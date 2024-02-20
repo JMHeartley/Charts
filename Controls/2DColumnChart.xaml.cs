@@ -52,36 +52,6 @@ namespace Controls
             var xAxisEndPoint = new Point(chartWidth - axisMargin, chartHeight - axisMargin);
 
             // for illustration
-            //Ellipse yAxisEndPointEllipse = new Ellipse()
-            //{
-            //    Fill = Brushes.Red,
-            //    Width = 10,
-            //    Height = 10,
-            //};
-            //mainCanvas.Children.Add(yAxisEndPointEllipse);
-            //Canvas.SetLeft(yAxisEndPointEllipse, yAxisEndPoint.X - 5);
-            //Canvas.SetTop(yAxisEndPointEllipse, yAxisEndPoint.Y - 5);
-
-            //Ellipse originEllipse = new Ellipse()
-            //{
-            //    Fill = Brushes.Red,
-            //    Width = 10,
-            //    Height = 10,
-            //};
-            //mainCanvas.Children.Add(originEllipse);
-            //Canvas.SetLeft(originEllipse, origin.X - 5);
-            //Canvas.SetTop(originEllipse, origin.Y - 5);
-
-            //Ellipse xAxisEndPointEllipse = new Ellipse()
-            //{
-            //    Fill = Brushes.Blue,
-            //    Width = 10,
-            //    Height = 10,
-            //};
-            //mainCanvas.Children.Add(xAxisEndPointEllipse);
-            //Canvas.SetLeft(xAxisEndPointEllipse, xAxisEndPoint.X - 5);
-            //Canvas.SetTop(xAxisEndPointEllipse, xAxisEndPoint.Y - 5);
-
             //Line yAxisStartLine = new Line()
             //{
             //    Stroke = Brushes.LightGray,
