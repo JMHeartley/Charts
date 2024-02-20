@@ -82,6 +82,8 @@ namespace Controls
                 angle = category.Percentage * 360 / 100 + previousAngle;
                 Debug.WriteLine($"The current angle is {angle} degrees");
 
+                previousAngle = angle;
+
                 var arcX = radius * Math.Cos(angle * Math.PI / 180) + centerX;
                 var arcY = radius * Math.Sin(angle * Math.PI / 180) + centerY;
 
@@ -113,8 +115,6 @@ namespace Controls
                     Data = pathGeometry
                 };
                 MainCanvas.Children.Add(path);
-
-                previousAngle = angle;
 
                 var outline1 = new Line
                 {
