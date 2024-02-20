@@ -50,7 +50,7 @@
     <Compile Include="2DPieChart.xaml.cs">
       <DependentUpon>2DPieChart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ColumnItem.cs" />
     <Compile Include="Models\PieCategory.cs" />
     <Compile Include="Models\TestPieCategories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

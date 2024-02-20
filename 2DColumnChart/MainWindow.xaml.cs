@@ -17,7 +17,7 @@ namespace _2DColumnChart
         {
             InitializeComponent();
 
-            Items = new List<Item>
+            Items = new List<ColumnItem>
             {
                 // test 01
                 //new Item(){Header= "Item1", Value = 266},
@@ -56,22 +56,22 @@ namespace _2DColumnChart
                 //new Item(){Header= "Item10", Value = 155},
 
                 // test 04
-                new Item { Header = "Item1", Value = 101 },
-                new Item { Header = "Item2", Value = 208 },
-                new Item { Header = "Item3", Value = 75 },
-                new Item { Header = "Item4", Value = 135 },
-                new Item { Header = "Item5", Value = 300 },
-                new Item { Header = "Item6", Value = 400 },
-                new Item { Header = "Item7", Value = 360 },
-                new Item { Header = "Item8", Value = 499 },
-                new Item { Header = "Item9", Value = 233 },
-                new Item { Header = "Item10", Value = 122 }
+                new ColumnItem { Header = "Item1", Value = 101 },
+                new ColumnItem { Header = "Item2", Value = 208 },
+                new ColumnItem { Header = "Item3", Value = 75 },
+                new ColumnItem { Header = "Item4", Value = 135 },
+                new ColumnItem { Header = "Item5", Value = 300 },
+                new ColumnItem { Header = "Item6", Value = 400 },
+                new ColumnItem { Header = "Item7", Value = 360 },
+                new ColumnItem { Header = "Item8", Value = 499 },
+                new ColumnItem { Header = "Item9", Value = 233 },
+                new ColumnItem { Header = "Item10", Value = 122 }
             };
 
             Paint();
         }
 
-        private List<Item> Items { get; }
+        private List<ColumnItem> Items { get; }
 
         private void Paint()
         {
