@@ -47,6 +47,9 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="2DColumnChart.xaml.cs">
+      <DependentUpon>2DColumnChart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="2DPieChart.xaml.cs">
       <DependentUpon>2DPieChart.xaml</DependentUpon>
     </Compile>
@@ -77,6 +80,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="2DColumnChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="2DPieChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
