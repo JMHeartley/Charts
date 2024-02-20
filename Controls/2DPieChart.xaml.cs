@@ -80,7 +80,7 @@ namespace Controls
                 var line1Y = radius * Math.Sin(angle * Math.PI / 180) + centerY;
 
                 angle = category.Percentage * 360 / 100 + previousAngle;
-                Debug.WriteLine(angle);
+                Debug.WriteLine($"The current angle is {angle} degrees");
 
                 var arcX = radius * Math.Cos(angle * Math.PI / 180) + centerX;
                 var arcY = radius * Math.Sin(angle * Math.PI / 180) + centerY;
