@@ -17,7 +17,12 @@ namespace _2DPieChart
         {
             InitializeComponent();
 
-            float pieWidth = 650, pieHeight = 650, centerX = pieWidth / 2, centerY = pieHeight / 2, radius = pieWidth / 2;
+            const float pieWidth = 650;
+            const float pieHeight = 650;
+            const float centerX = pieWidth / 2;
+            const float centerY = pieHeight / 2;
+            const float radius = pieWidth / 2;
+
             mainCanvas.Width = pieWidth;
             mainCanvas.Height = pieHeight;
 
@@ -26,7 +31,8 @@ namespace _2DPieChart
             detailsItemsControl.ItemsSource = Categories;
 
             // draw pie
-            float angle = 0, prevAngle = 0;
+            var angle = 0f;
+            var prevAngle = 0f;
             foreach (var category in Categories)
             {
                 var line1X = radius * Math.Cos(angle * Math.PI / 180) + centerX;
@@ -39,7 +45,8 @@ namespace _2DPieChart
                 var arcY = radius * Math.Sin(angle * Math.PI / 180) + centerY;
 
                 var line1Segment = new LineSegment(new Point(line1X, line1Y), isStroked: false);
-                double arcWidth = radius, arcHeight = radius;
+                const double arcWidth = radius;
+                const double arcHeight = radius;
                 var isLargeArc = category.Percentage > 50;
                 var arcSegment = new ArcSegment
                 {
