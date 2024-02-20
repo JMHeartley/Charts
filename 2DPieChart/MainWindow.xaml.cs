@@ -1,10 +1,6 @@
 ﻿using Charts._2DPie;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Windows;
-using System.Windows.Media;
-using System.Windows.Shapes;
 
 namespace _2DPieChart
 {
@@ -19,9 +15,6 @@ namespace _2DPieChart
 
             const float pieWidth = 650;
             const float pieHeight = 650;
-            const float centerX = pieWidth / 2;
-            const float centerY = pieHeight / 2;
-            const float radius = pieWidth / 2;
 
             mainCanvas.Width = pieWidth;
             mainCanvas.Height = pieHeight;
@@ -30,77 +23,11 @@ namespace _2DPieChart
 
             detailsItemsControl.ItemsSource = Categories;
 
-            // draw pie
-            var angle = 0f;
-            var previousAngle = 0f;
-            foreach (var category in Categories)
+            var _2dPie = new _2DPie();
+            var uiElements = _2dPie.Create(pieWidth, pieHeight, Categories);
+            foreach (var uiElement in uiElements)
             {
-                var line1X = radius * Math.Cos(angle * Math.PI / 180) + centerX;
-                var line1Y = radius * Math.Sin(angle * Math.PI / 180) + centerY;
-
-                angle = category.Percentage * 360 / 100 + previousAngle;
-                Debug.WriteLine(angle);
-
-                var arcX = radius * Math.Cos(angle * Math.PI / 180) + centerX;
-                var arcY = radius * Math.Sin(angle * Math.PI / 180) + centerY;
-
-                var line1Segment = new LineSegment(new Point(line1X, line1Y), isStroked: false);
-                const double arcWidth = radius;
-                const double arcHeight = radius;
-                var isLargeArc = category.Percentage > 50;
-                var arcSegment = new ArcSegment
-                {
-                    Size = new Size(arcWidth, arcHeight),
-                    Point = new Point(arcX, arcY),
-                    SweepDirection = SweepDirection.Clockwise,
-                    IsLargeArc = isLargeArc
-                };
-                var line2Segment = new LineSegment(new Point(centerX, centerY), isStroked: false);
-
-                var pathFigure = new PathFigure(
-                    new Point(centerX, centerY),
-                    new List<PathSegment>
-                    {
-                        line1Segment,
-                        arcSegment,
-                        line2Segment
-                    },
-                    closed: true);
-
-                var pathFigures = new List<PathFigure> { pathFigure };
-                var pathGeometry = new PathGeometry(pathFigures);
-                var path = new Path
-                {
-                    Fill = category.ColorBrush,
-                    Data = pathGeometry
-                };
-                mainCanvas.Children.Add(path);
-
-                previousAngle = angle;
-
-
-                // draw outlines
-                var outline1 = new Line
-                {
-                    X1 = centerX,
-                    Y1 = centerY,
-                    X2 = line1Segment.Point.X,
-                    Y2 = line1Segment.Point.Y,
-                    Stroke = Brushes.White,
-                    StrokeThickness = 5
-                };
-                var outline2 = new Line
-                {
-                    X1 = centerX,
-                    Y1 = centerY,
-                    X2 = arcSegment.Point.X,
-                    Y2 = arcSegment.Point.Y,
-                    Stroke = Brushes.White,
-                    StrokeThickness = 5
-                };
-
-                mainCanvas.Children.Add(outline1);
-                mainCanvas.Children.Add(outline2);
+                mainCanvas.Children.Add(uiElement);
             }
         }
 
