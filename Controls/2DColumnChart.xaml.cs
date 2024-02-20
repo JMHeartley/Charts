@@ -51,29 +51,27 @@ namespace Controls
             var origin = new Point(axisMargin, chartHeight - axisMargin);
             var xAxisEndPoint = new Point(chartWidth - axisMargin, chartHeight - axisMargin);
 
-            // for illustration
-            //Line yAxisStartLine = new Line()
-            //{
-            //    Stroke = Brushes.LightGray,
-            //    StrokeThickness = 1,
-            //    X1 = yAxisEndPoint.X,
-            //    Y1 = yAxisEndPoint.Y,
-            //    X2 = origin.X,
-            //    Y2 = origin.Y,
-            //};
-            //mainCanvas.Children.Add(yAxisStartLine);
+            var yAxisStartLine = new Line
+            {
+                Stroke = Brushes.LightGray,
+                StrokeThickness = 1,
+                X1 = yAxisEndPoint.X,
+                Y1 = yAxisEndPoint.Y,
+                X2 = origin.X,
+                Y2 = origin.Y
+            };
+            MainCanvas.Children.Add(yAxisStartLine);
 
-            //Line yAxisEndLine = new Line()
-            //{
-            //    Stroke = Brushes.LightGray,
-            //    StrokeThickness = 1,
-            //    X1 = xAxisEndPoint.X,
-            //    Y1 = xAxisEndPoint.Y,
-            //    X2 = xAxisEndPoint.X,
-            //    Y2 = yAxisEndPoint.Y,
-            //};
-            //mainCanvas.Children.Add(yAxisEndLine);
-
+            var yAxisEndLine = new Line
+            {
+                Stroke = Brushes.LightGray,
+                StrokeThickness = 1,
+                X1 = xAxisEndPoint.X,
+                Y1 = xAxisEndPoint.Y,
+                X2 = xAxisEndPoint.X,
+                Y2 = yAxisEndPoint.Y
+            };
+            MainCanvas.Children.Add(yAxisEndLine);
 
             double yValue = 0;
             var yAxisValue = origin.Y;
