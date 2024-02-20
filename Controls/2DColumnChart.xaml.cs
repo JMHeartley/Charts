@@ -140,11 +140,9 @@ namespace Controls
                 Canvas.SetLeft(yAxisTextBlock, origin.X - 35);
                 Canvas.SetTop(yAxisTextBlock, yAxisValue - 12.5);
 
-
                 yAxisValue -= yAxisInterval;
                 yValue += yAxisInterval;
             }
-
 
             var margin = origin.X + blockMargin;
             foreach (var item in Items)
@@ -169,7 +167,6 @@ namespace Controls
                 MainCanvas.Children.Add(blockHeader);
                 Canvas.SetLeft(blockHeader, margin + 10);
                 Canvas.SetTop(blockHeader, origin.Y + 5);
-
 
                 margin += blockWidth + blockMargin;
             }
