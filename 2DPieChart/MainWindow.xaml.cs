@@ -1,5 +1,4 @@
 ﻿using Charts._2DPie;
-using System.Collections.Generic;
 using System.Windows;
 
 namespace _2DPieChart
@@ -19,18 +18,16 @@ namespace _2DPieChart
             mainCanvas.Width = pieWidth;
             mainCanvas.Height = pieHeight;
 
-            Categories = TestCategories.Case6;
+            var categories = TestCategories.Case6;
 
-            detailsItemsControl.ItemsSource = Categories;
+            detailsItemsControl.ItemsSource = categories;
 
             var _2dPie = new _2DPie();
-            var uiElements = _2dPie.Create(pieWidth, pieHeight, Categories);
+            var uiElements = _2dPie.Create(pieWidth, pieHeight, categories);
             foreach (var uiElement in uiElements)
             {
                 mainCanvas.Children.Add(uiElement);
             }
         }
-
-        private List<Category> Categories { get; }
     }
 }
