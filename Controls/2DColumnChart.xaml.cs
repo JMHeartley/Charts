@@ -163,10 +163,13 @@ namespace Controls
                 {
                     Text = item.Header,
                     FontSize = 16,
-                    Foreground = ForegroundBrush
+                    Foreground = ForegroundBrush,
+                    TextAlignment = TextAlignment.Center,
+                    Width = blockWidth,
+                    TextWrapping = TextWrapping.Wrap
                 };
                 MainCanvas.Children.Add(blockHeader);
-                Canvas.SetLeft(blockHeader, margin + 10);
+                Canvas.SetLeft(blockHeader, margin);
                 Canvas.SetTop(blockHeader, origin.Y + 5);
 
                 margin += blockWidth + blockMargin;
