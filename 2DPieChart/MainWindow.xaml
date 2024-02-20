@@ -10,8 +10,7 @@
         Width="1280"
         WindowStartupLocation="CenterScreen"
         WindowState="Normal">
-    <StackPanel x:Name="mainGrid"
-                Orientation="Horizontal"
+    <StackPanel Orientation="Horizontal"
                 VerticalAlignment="Center"
                 HorizontalAlignment="Center">
         <Canvas x:Name="mainCanvas"
