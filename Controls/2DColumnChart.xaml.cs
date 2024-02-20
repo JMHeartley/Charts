@@ -79,12 +79,12 @@ namespace Controls
 
         private void Paint()
         {
-            float chartWidth = 1200,
-                  chartHeight = 700,
-                  axisMargin = 100,
-                  yAxisInterval = 100,
-                  blockWidth = 70,
-                  blockMargin = 25;
+            float chartWidth = 1200;
+            float chartHeight = 700;
+            float axisMargin = 100;
+            float yAxisInterval = 50;
+            float blockWidth = 70;
+            float blockMargin = 25;
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
 
