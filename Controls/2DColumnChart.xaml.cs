@@ -85,7 +85,7 @@ namespace Controls
             float yAxisInterval = 50;
             const float originalBlockWidthRatio = 0.583333f;
             var blockWidth = chartWidth / Items.Count * originalBlockWidthRatio;
-            float blockMargin = 25;
+            var blockMargin = (chartWidth / Items.Count - blockWidth) / 2;
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
 
