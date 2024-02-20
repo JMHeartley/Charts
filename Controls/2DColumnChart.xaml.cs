@@ -15,8 +15,13 @@ namespace Controls
         public static readonly DependencyProperty ItemsProperty =
             DependencyProperty.Register(nameof(Items), typeof(List<ColumnItem>), typeof(_2DColumnChart));
 
+        public static readonly DependencyProperty ForegroundBrushProperty =
+            DependencyProperty.Register(nameof(ForegroundBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
+
         public _2DColumnChart()
         {
+            ForegroundBrush = Brushes.Black;
+
             InitializeComponent();
         }
 
@@ -34,6 +39,12 @@ namespace Controls
 
                 Paint();
             }
+        }
+
+        public SolidColorBrush ForegroundBrush
+        {
+            get => (SolidColorBrush)GetValue(ForegroundBrushProperty);
+            set => SetValue(ForegroundBrushProperty, value);
         }
 
         private void Paint()
@@ -91,7 +102,7 @@ namespace Controls
                 var yAxisTextBlock = new TextBlock
                 {
                     Text = $"{yValue}",
-                    Foreground = Brushes.Black,
+                    Foreground = ForegroundBrush,
                     FontSize = 16
                 };
                 MainCanvas.Children.Add(yAxisTextBlock);
@@ -124,7 +135,7 @@ namespace Controls
                 {
                     Text = item.Header,
                     FontSize = 16,
-                    Foreground = Brushes.Black
+                    Foreground = ForegroundBrush
                 };
                 MainCanvas.Children.Add(blockHeader);
                 Canvas.SetLeft(blockHeader, margin + 10);
