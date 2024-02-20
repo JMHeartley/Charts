@@ -142,7 +142,6 @@ namespace Controls
                 var block = new Rectangle
                 {
                     Fill = Brushes.Gold,
-                    //Fill = new SolidColorBrush(Color.FromRgb(68, 114, 196)),
                     Width = blockWidth,
                     Height = item.Value
                 };
