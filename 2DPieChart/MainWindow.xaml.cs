@@ -1,28 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace _2DPieChart
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Category> Categories { get; set; }
-
         public MainWindow()
         {
             InitializeComponent();
@@ -31,9 +20,10 @@ namespace _2DPieChart
             mainCanvas.Width = pieWidth;
             mainCanvas.Height = pieHeight;
 
-            Categories = new List<Category>()
+            Categories = new List<Category>
             {
                 #region test #1
+
                 //new Category
                 //{
                 //    Title = "Category#01",
@@ -54,9 +44,11 @@ namespace _2DPieChart
                 //    Percentage = 60,
                 //    ColorBrush = Brushes.CadetBlue,
                 //}, 
+
                 #endregion
 
                 #region test #2
+
                 //new Category
                 //{
                 //    Title = "Category#01",
@@ -70,9 +62,11 @@ namespace _2DPieChart
                 //    Percentage = 80,
                 //    ColorBrush = Brushes.LightBlue,
                 //}, 
+
                 #endregion
 
                 #region test #3
+
                 //new Category
                 //{
                 //    Title = "Category#01",
@@ -86,9 +80,11 @@ namespace _2DPieChart
                 //    Percentage = 50,
                 //    ColorBrush = Brushes.LightBlue,
                 //}, 
+
                 #endregion
 
                 #region test #4
+
                 //new Category
                 //{
                 //    Title = "Category#01",
@@ -123,9 +119,11 @@ namespace _2DPieChart
                 //    Percentage = 10,
                 //    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#A5A5A5")),
                 //}, 
+
                 #endregion
 
                 #region test #5
+
                 //new Category
                 //{
                 //    Title = "Category#01",
@@ -160,43 +158,46 @@ namespace _2DPieChart
                 //    Percentage = 10,
                 //    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#A5A5A5")),
                 //}, 
+
                 #endregion
 
                 #region test #6
+
                 new Category
                 {
                     Title = "Category#01",
                     Percentage = 20,
-                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4472C4")),
+                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4472C4"))
                 },
 
                 new Category
                 {
                     Title = "Category#02",
                     Percentage = 60,
-                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ED7D31")),
+                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ED7D31"))
                 },
 
                 new Category
                 {
                     Title = "Category#03",
                     Percentage = 5,
-                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC000")),
+                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC000"))
                 },
 
                 new Category
                 {
                     Title = "Category#04",
                     Percentage = 10,
-                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5B9BD5")),
+                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5B9BD5"))
                 },
 
                 new Category
                 {
                     Title = "Category#05",
                     Percentage = 5,
-                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#A5A5A5")),
-                }, 
+                    ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#A5A5A5"))
+                },
+
                 #endregion
             };
 
@@ -206,43 +207,43 @@ namespace _2DPieChart
             float angle = 0, prevAngle = 0;
             foreach (var category in Categories)
             {
-                double line1X = (radius * Math.Cos(angle * Math.PI / 180)) + centerX;
-                double line1Y = (radius * Math.Sin(angle * Math.PI / 180)) + centerY;
+                var line1X = radius * Math.Cos(angle * Math.PI / 180) + centerX;
+                var line1Y = radius * Math.Sin(angle * Math.PI / 180) + centerY;
 
-                angle = category.Percentage * (float)360 / 100 + prevAngle;
+                angle = category.Percentage * 360 / 100 + prevAngle;
                 Debug.WriteLine(angle);
 
-                double arcX = (radius * Math.Cos(angle * Math.PI / 180)) + centerX;
-                double arcY = (radius * Math.Sin(angle * Math.PI / 180)) + centerY;
+                var arcX = radius * Math.Cos(angle * Math.PI / 180) + centerX;
+                var arcY = radius * Math.Sin(angle * Math.PI / 180) + centerY;
 
-                var line1Segment = new LineSegment(new Point(line1X, line1Y), false);
+                var line1Segment = new LineSegment(new Point(line1X, line1Y), isStroked: false);
                 double arcWidth = radius, arcHeight = radius;
-                bool isLargeArc = category.Percentage > 50;
-                var arcSegment = new ArcSegment()
+                var isLargeArc = category.Percentage > 50;
+                var arcSegment = new ArcSegment
                 {
                     Size = new Size(arcWidth, arcHeight),
                     Point = new Point(arcX, arcY),
                     SweepDirection = SweepDirection.Clockwise,
-                    IsLargeArc = isLargeArc,
+                    IsLargeArc = isLargeArc
                 };
-                var line2Segment = new LineSegment(new Point(centerX, centerY), false);
+                var line2Segment = new LineSegment(new Point(centerX, centerY), isStroked: false);
 
                 var pathFigure = new PathFigure(
                     new Point(centerX, centerY),
-                    new List<PathSegment>()
+                    new List<PathSegment>
                     {
                         line1Segment,
                         arcSegment,
-                        line2Segment,
+                        line2Segment
                     },
-                    true);
+                    closed: true);
 
-                var pathFigures = new List<PathFigure>() { pathFigure, };
+                var pathFigures = new List<PathFigure> { pathFigure };
                 var pathGeometry = new PathGeometry(pathFigures);
-                var path = new Path()
+                var path = new Path
                 {
                     Fill = category.ColorBrush,
-                    Data = pathGeometry,
+                    Data = pathGeometry
                 };
                 mainCanvas.Children.Add(path);
 
@@ -250,29 +251,31 @@ namespace _2DPieChart
 
 
                 // draw outlines
-                var outline1 = new Line()
+                var outline1 = new Line
                 {
                     X1 = centerX,
                     Y1 = centerY,
                     X2 = line1Segment.Point.X,
                     Y2 = line1Segment.Point.Y,
                     Stroke = Brushes.White,
-                    StrokeThickness = 5,
+                    StrokeThickness = 5
                 };
-                var outline2 = new Line()
+                var outline2 = new Line
                 {
                     X1 = centerX,
                     Y1 = centerY,
                     X2 = arcSegment.Point.X,
                     Y2 = arcSegment.Point.Y,
                     Stroke = Brushes.White,
-                    StrokeThickness = 5,
+                    StrokeThickness = 5
                 };
 
                 mainCanvas.Children.Add(outline1);
                 mainCanvas.Children.Add(outline2);
             }
         }
+
+        private List<Category> Categories { get; }
     }
 
     public class Category
