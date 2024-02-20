@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LineChart", "LineChart\Line
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2DPieChart", "2DPieChart\2DPieChart.csproj", "{73F5EF8A-3B41-4E18-9D98-845D6198D23F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DColumnChart", "2DColumnChart\2DColumnChart.csproj", "{E5FA618A-0900-4ABE-ADBF-0215E005C9F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2DColumnChart", "2DColumnChart\2DColumnChart.csproj", "{E5FA618A-0900-4ABE-ADBF-0215E005C9F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Charts", "Charts\Charts.csproj", "{159C2F14-B44E-43C2-876A-277EC3965E86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{E5FA618A-0900-4ABE-ADBF-0215E005C9F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5FA618A-0900-4ABE-ADBF-0215E005C9F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5FA618A-0900-4ABE-ADBF-0215E005C9F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{159C2F14-B44E-43C2-876A-277EC3965E86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159C2F14-B44E-43C2-876A-277EC3965E86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159C2F14-B44E-43C2-876A-277EC3965E86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159C2F14-B44E-43C2-876A-277EC3965E86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
