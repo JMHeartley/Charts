@@ -2,7 +2,7 @@
 
 namespace Controls.Models
 {
-    public class Category
+    public class PieCategory
     {
         public float Percentage { get; set; }
         public string Title { get; set; }

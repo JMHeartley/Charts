@@ -3,25 +3,25 @@ using System.Windows.Media;
 
 namespace Controls.Models
 {
-    public static class TestCategories
+    public static class TestPieCategories
     {
-        public static List<Category> Case1 = new List<Category>
+        public static List<PieCategory> Case1 = new List<PieCategory>
         {
-            new Category
+            new PieCategory
             {
                 Title = "Category#01",
                 Percentage = 10,
                 ColorBrush = Brushes.Gold
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#02",
                 Percentage = 30,
                 ColorBrush = Brushes.Pink
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#03",
                 Percentage = 60,
@@ -29,16 +29,16 @@ namespace Controls.Models
             }
         };
 
-        public static List<Category> Case2 = new List<Category>
+        public static List<PieCategory> Case2 = new List<PieCategory>
         {
-            new Category
+            new PieCategory
             {
                 Title = "Category#01",
                 Percentage = 20,
                 ColorBrush = Brushes.Gold
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#02",
                 Percentage = 80,
@@ -46,16 +46,16 @@ namespace Controls.Models
             }
         };
 
-        public static List<Category> Case3 = new List<Category>
+        public static List<PieCategory> Case3 = new List<PieCategory>
         {
-            new Category
+            new PieCategory
             {
                 Title = "Category#01",
                 Percentage = 50,
                 ColorBrush = Brushes.Gold
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#02",
                 Percentage = 50,
@@ -63,37 +63,37 @@ namespace Controls.Models
             }
         };
 
-        public static List<Category> Case4 = new List<Category>
+        public static List<PieCategory> Case4 = new List<PieCategory>
         {
-            new Category
+            new PieCategory
             {
                 Title = "Category#01",
                 Percentage = 30,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4472C4"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#02",
                 Percentage = 30,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ED7D31"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#03",
                 Percentage = 20,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC000"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#04",
                 Percentage = 20,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5B9BD5"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#05",
                 Percentage = 10,
@@ -101,37 +101,37 @@ namespace Controls.Models
             }
         };
 
-        public static List<Category> Case5 = new List<Category>
+        public static List<PieCategory> Case5 = new List<PieCategory>
         {
-            new Category
+            new PieCategory
             {
                 Title = "Category#01",
                 Percentage = 20,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4472C4"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#02",
                 Percentage = 30,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ED7D31"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#03",
                 Percentage = 20,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC000"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#04",
                 Percentage = 20,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5B9BD5"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#05",
                 Percentage = 10,
@@ -139,37 +139,37 @@ namespace Controls.Models
             }
         };
 
-        public static List<Category> Case6 = new List<Category>
+        public static List<PieCategory> Case6 = new List<PieCategory>
         {
-            new Category
+            new PieCategory
             {
                 Title = "Category#01",
                 Percentage = 20,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#4472C4"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#02",
                 Percentage = 60,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ED7D31"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#03",
                 Percentage = 5,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FFC000"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#04",
                 Percentage = 10,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5B9BD5"))
             },
 
-            new Category
+            new PieCategory
             {
                 Title = "Category#05",
                 Percentage = 5,

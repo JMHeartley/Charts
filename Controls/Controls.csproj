@@ -50,8 +50,8 @@
     <Compile Include="2DPieChart.xaml.cs">
       <DependentUpon>2DPieChart.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Category.cs" />
-    <Compile Include="Models\TestCategories.cs" />
+    <Compile Include="Models\PieCategory.cs" />
+    <Compile Include="Models\TestPieCategories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

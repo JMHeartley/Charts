@@ -12,7 +12,7 @@ namespace _2DPieChart
         {
             InitializeComponent();
 
-            PieChart.Categories = TestCategories.Case6;
+            PieChart.Categories = TestPieCategories.Case6;
         }
     }
 }

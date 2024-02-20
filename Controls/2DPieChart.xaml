@@ -22,7 +22,7 @@
                       HorizontalScrollBarVisibility="Hidden">
             <ItemsControl ItemsSource="{Binding Categories, RelativeSource={RelativeSource AncestorType={x:Type local:_2DPieChart}}, Mode=OneWay}">
                 <ItemsControl.ItemTemplate>
-                    <DataTemplate DataType="{x:Type models:Category}">
+                    <DataTemplate DataType="{x:Type models:PieCategory}">
                         <StackPanel Orientation="Horizontal"
                                     Margin="10">
 
