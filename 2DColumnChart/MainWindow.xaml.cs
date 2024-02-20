@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Controls.Models;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
@@ -233,11 +234,5 @@ namespace _2DColumnChart
             {
             }
         }
-    }
-
-    public class Item
-    {
-        public string Header { get; set; }
-        public int Value { get; set; }
     }
 }
