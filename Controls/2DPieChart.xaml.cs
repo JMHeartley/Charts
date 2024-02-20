@@ -94,8 +94,6 @@ namespace Controls
 
                 previousAngle = angle;
 
-
-                // draw outlines
                 var outline1 = new Line
                 {
                     X1 = centerX,
