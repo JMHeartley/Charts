@@ -23,7 +23,6 @@ namespace Controls
         public static readonly DependencyProperty StrokeThicknessProperty =
             DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(_2DPieChart));
 
-
         public _2DPieChart()
         {
             StrokeBrush = Brushes.White;
