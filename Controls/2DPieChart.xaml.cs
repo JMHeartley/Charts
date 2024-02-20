@@ -17,8 +17,13 @@ namespace Controls
         public static readonly DependencyProperty CategoriesProperty =
             DependencyProperty.Register(nameof(Categories), typeof(List<Category>), typeof(_2DPieChart));
 
+        public static readonly DependencyProperty StrokeBrushProperty =
+            DependencyProperty.Register(nameof(StrokeBrush), typeof(SolidColorBrush), typeof(_2DPieChart));
+
         public _2DPieChart()
         {
+            StrokeBrush = Brushes.White;
+
             InitializeComponent();
         }
 
@@ -42,6 +47,12 @@ namespace Controls
 
                 CreateChart(pieWidth, pieHeight);
             }
+        }
+
+        public SolidColorBrush StrokeBrush
+        {
+            get => (SolidColorBrush)GetValue(StrokeBrushProperty);
+            set => SetValue(StrokeBrushProperty, value);
         }
 
         private void CreateChart(float pieWidth, float pieHeight)
@@ -100,7 +111,7 @@ namespace Controls
                     Y1 = centerY,
                     X2 = line1Segment.Point.X,
                     Y2 = line1Segment.Point.Y,
-                    Stroke = Brushes.White,
+                    Stroke = StrokeBrush,
                     StrokeThickness = 5
                 };
                 var outline2 = new Line
@@ -109,7 +120,7 @@ namespace Controls
                     Y1 = centerY,
                     X2 = arcSegment.Point.X,
                     Y2 = arcSegment.Point.Y,
-                    Stroke = Brushes.White,
+                    Stroke = StrokeBrush,
                     StrokeThickness = 5
                 };
 
