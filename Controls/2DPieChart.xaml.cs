@@ -64,15 +64,12 @@ namespace Controls
                 var arcY = radius * Math.Sin(angle * Math.PI / 180) + centerY;
 
                 var line1Segment = new LineSegment(new Point(line1X, line1Y), isStroked: false);
-                var arcWidth = radius;
-                var arcHeight = radius;
-                var isLargeArc = category.Percentage > 50;
                 var arcSegment = new ArcSegment
                 {
-                    Size = new Size(arcWidth, arcHeight),
+                    Size = new Size(radius, radius),
                     Point = new Point(arcX, arcY),
                     SweepDirection = SweepDirection.Clockwise,
-                    IsLargeArc = isLargeArc
+                    IsLargeArc = category.Percentage > 50
                 };
                 var line2Segment = new LineSegment(new Point(centerX, centerY), isStroked: false);
 
