@@ -32,13 +32,13 @@ namespace _2DPieChart
 
             // draw pie
             var angle = 0f;
-            var prevAngle = 0f;
+            var previousAngle = 0f;
             foreach (var category in Categories)
             {
                 var line1X = radius * Math.Cos(angle * Math.PI / 180) + centerX;
                 var line1Y = radius * Math.Sin(angle * Math.PI / 180) + centerY;
 
-                angle = category.Percentage * 360 / 100 + prevAngle;
+                angle = category.Percentage * 360 / 100 + previousAngle;
                 Debug.WriteLine(angle);
 
                 var arcX = radius * Math.Cos(angle * Math.PI / 180) + centerX;
@@ -76,7 +76,7 @@ namespace _2DPieChart
                 };
                 mainCanvas.Children.Add(path);
 
-                prevAngle = angle;
+                previousAngle = angle;
 
 
                 // draw outlines
