@@ -11,4 +11,8 @@
     <None Remove="code.txt" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Charts\Charts.csproj" />
+  </ItemGroup>
+
 </Project>

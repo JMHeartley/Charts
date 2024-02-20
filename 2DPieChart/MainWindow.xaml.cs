@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Charts._2DPie;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows;
@@ -276,12 +277,5 @@ namespace _2DPieChart
         }
 
         private List<Category> Categories { get; }
-    }
-
-    public class Category
-    {
-        public float Percentage { get; set; }
-        public string Title { get; set; }
-        public Brush ColorBrush { get; set; }
     }
 }
