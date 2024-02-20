@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2DColumnChart"
         mc:Ignorable="d"
-        Title="2-D Column Chart" 
+        Title="2-D Column Chart"
         Width="1280"
-        Height="720" 
+        Height="720"
         WindowStartupLocation="CenterScreen"
         WindowState="Normal">
     <Grid HorizontalAlignment="Center"
           VerticalAlignment="Center">
-        <Canvas x:Name="mainCanvas"/>
+        <Canvas x:Name="mainCanvas" />
     </Grid>
 </Window>

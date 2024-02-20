@@ -1,32 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace _2DColumnChart
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    ///     Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Item> Items { get; set; }
-
         public MainWindow()
         {
             InitializeComponent();
 
-            Items = new List<Item>()
+            Items = new List<Item>
             {
                 // test 01
                 //new Item(){Header= "Item1", Value = 266},
@@ -65,33 +55,39 @@ namespace _2DColumnChart
                 //new Item(){Header= "Item10", Value = 155},
 
                 // test 04
-                new Item(){Header= "Item1", Value = 101},
-                new Item(){Header= "Item2", Value = 208},
-                new Item(){Header= "Item3", Value = 75},
-                new Item(){Header= "Item4", Value = 135},
-                new Item(){Header= "Item5", Value = 300},
-                new Item(){Header= "Item6", Value = 400},
-                new Item(){Header= "Item7", Value = 360},
-                new Item(){Header= "Item8", Value = 499},
-                new Item(){Header= "Item9", Value = 233},
-                new Item(){Header= "Item10", Value = 122},
+                new Item { Header = "Item1", Value = 101 },
+                new Item { Header = "Item2", Value = 208 },
+                new Item { Header = "Item3", Value = 75 },
+                new Item { Header = "Item4", Value = 135 },
+                new Item { Header = "Item5", Value = 300 },
+                new Item { Header = "Item6", Value = 400 },
+                new Item { Header = "Item7", Value = 360 },
+                new Item { Header = "Item8", Value = 499 },
+                new Item { Header = "Item9", Value = 233 },
+                new Item { Header = "Item10", Value = 122 }
             };
 
             Paint();
         }
 
+        private List<Item> Items { get; }
+
         private void Paint()
         {
             try
             {
-                float chartWidth = 1200, chartHeight = 700, axisMargin = 100, yAxisInterval = 100,
-                    blockWidth = 70, blockMargin = 25;
+                float chartWidth = 1200,
+                      chartHeight = 700,
+                      axisMargin = 100,
+                      yAxisInterval = 100,
+                      blockWidth = 70,
+                      blockMargin = 25;
                 mainCanvas.Width = chartWidth;
                 mainCanvas.Height = chartHeight;
 
-                Point yAxisEndPoint = new Point(axisMargin, axisMargin);
-                Point origin = new Point(axisMargin, chartHeight - axisMargin);
-                Point xAxisEndPoint = new Point(chartWidth - axisMargin, chartHeight - axisMargin);
+                var yAxisEndPoint = new Point(axisMargin, axisMargin);
+                var origin = new Point(axisMargin, chartHeight - axisMargin);
+                var xAxisEndPoint = new Point(chartWidth - axisMargin, chartHeight - axisMargin);
 
                 // for illustration
                 //Ellipse yAxisEndPointEllipse = new Ellipse()
@@ -176,23 +172,22 @@ namespace _2DColumnChart
                     //Canvas.SetTop(rEllipse, yAxisValue - 5);
 
 
-
-                    Line yLine = new Line()
+                    var yLine = new Line
                     {
                         Stroke = Brushes.LightGray,
                         StrokeThickness = 1,
                         X1 = origin.X,
                         Y1 = yAxisValue,
                         X2 = xAxisEndPoint.X,
-                        Y2 = yAxisValue,
+                        Y2 = yAxisValue
                     };
                     mainCanvas.Children.Add(yLine);
 
-                    TextBlock yAxisTextBlock = new TextBlock()
+                    var yAxisTextBlock = new TextBlock
                     {
                         Text = $"{yValue}",
                         Foreground = Brushes.Black,
-                        FontSize = 16,
+                        FontSize = 16
                     };
                     mainCanvas.Children.Add(yAxisTextBlock);
 
@@ -208,30 +203,30 @@ namespace _2DColumnChart
                 var margin = origin.X + blockMargin;
                 foreach (var item in Items)
                 {
-                    Rectangle block = new Rectangle()
+                    var block = new Rectangle
                     {
                         Fill = Brushes.Gold,
                         //Fill = new SolidColorBrush(Color.FromRgb(68, 114, 196)),
                         Width = blockWidth,
-                        Height = item.Value,
+                        Height = item.Value
                     };
 
                     mainCanvas.Children.Add(block);
                     Canvas.SetLeft(block, margin);
                     Canvas.SetTop(block, origin.Y - block.Height);
 
-                    TextBlock blockHeader = new TextBlock()
+                    var blockHeader = new TextBlock
                     {
                         Text = item.Header,
                         FontSize = 16,
-                        Foreground = Brushes.Black,
+                        Foreground = Brushes.Black
                     };
                     mainCanvas.Children.Add(blockHeader);
                     Canvas.SetLeft(blockHeader, margin + 10);
                     Canvas.SetTop(blockHeader, origin.Y + 5);
 
 
-                    margin += (blockWidth + blockMargin);
+                    margin += blockWidth + blockMargin;
                 }
             }
             catch (Exception exception)
