@@ -134,11 +134,13 @@ namespace Controls
                 {
                     Text = $"{yValue}",
                     Foreground = ForegroundBrush,
-                    FontSize = 16
+                    FontSize = 16,
+                    Width = 30,
+                    TextAlignment = TextAlignment.Right
                 };
                 MainCanvas.Children.Add(yAxisTextBlock);
 
-                Canvas.SetLeft(yAxisTextBlock, origin.X - 35);
+                Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlock.Width - 10);
                 Canvas.SetTop(yAxisTextBlock, yAxisValue - 12.5);
 
                 yAxisValue -= yAxisInterval;
