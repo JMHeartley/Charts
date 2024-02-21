@@ -49,20 +49,7 @@ namespace Controls
         public List<ColumnItem> Items
         {
             get => (List<ColumnItem>)GetValue(ItemsProperty);
-            set
-            {
-                SetValue(ItemsProperty, value);
-
-                if (Items is null || !Items.Any())
-                {
-                    return;
-                }
-
-                const float chartWidth = 1200;
-                const float chartHeight = 700;
-
-                Paint(chartWidth, chartHeight);
-            }
+            set => SetValue(ItemsProperty, value);
         }
 
         public SolidColorBrush ColumnBrush
@@ -95,7 +82,7 @@ namespace Controls
             set => SetValue(InnerPaddingProperty, value);
         }
 
-        private void Paint(float chartWidth, float chartHeight)
+        private void Paint(double chartWidth, double chartHeight)
         {
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
@@ -194,6 +181,13 @@ namespace Controls
 
                 currentXValue += block.Width + blockMarginX;
             }
+        }
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            MainCanvas.Children.Clear();
+
+            Paint(ActualWidth, ActualHeight);
         }
     }
 }
