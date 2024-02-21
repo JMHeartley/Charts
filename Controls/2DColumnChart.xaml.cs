@@ -49,7 +49,7 @@ namespace Controls
             {
                 SetValue(ItemsProperty, value);
 
-                if (Items is null)
+                if (Items is null || !Items.Any())
                 {
                     return;
                 }
