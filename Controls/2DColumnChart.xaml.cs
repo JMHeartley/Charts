@@ -12,6 +12,10 @@ namespace Controls
     /// </summary>
     public partial class _2DColumnChart : UserControl
     {
+        private const int X_AXIS_TEXT_BLOCK_TOP_MARGIN = 5;
+
+        private const int Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN = 10;
+
         public static readonly DependencyProperty ItemsProperty =
             DependencyProperty.Register(nameof(Items), typeof(List<ColumnItem>), typeof(_2DColumnChart));
 
@@ -130,7 +134,7 @@ namespace Controls
                 };
                 MainCanvas.Children.Add(yAxisTextBlock);
 
-                Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlock.Width - 10);
+                Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlock.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
                 Canvas.SetTop(yAxisTextBlock, yAxisValue - 12.5);
 
                 yAxisValue -= yAxisInterval;
@@ -162,7 +166,7 @@ namespace Controls
                 };
                 MainCanvas.Children.Add(blockHeader);
                 Canvas.SetLeft(blockHeader, margin);
-                Canvas.SetTop(blockHeader, origin.Y + 5);
+                Canvas.SetTop(blockHeader, origin.Y + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
                 margin += blockWidth + blockMargin;
             }
