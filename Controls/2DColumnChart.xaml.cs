@@ -1,5 +1,6 @@
 ﻿using Controls.Models;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -144,13 +145,13 @@ namespace Controls
                     Text = $"{yValue}",
                     Foreground = Foreground,
                     FontSize = FontSize,
-                    Width = 30,
                     TextAlignment = TextAlignment.Right
                 };
                 MainCanvas.Children.Add(yAxisTextBlock);
 
-                Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlock.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
-                Canvas.SetTop(yAxisTextBlock, currentYValue - 12.5);
+                var yAxisTextBlockEstimatedSize = EstimateSize(yAxisTextBlock);
+                Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlockEstimatedSize.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
+                Canvas.SetTop(yAxisTextBlock, currentYValue - yAxisTextBlockEstimatedSize.Height / 2);
 
                 var intervalYValue = chartInnerHeight / IntervalCount;
                 var intervalValue = Items.Max(item => item.Value) / IntervalCount;
@@ -194,6 +195,19 @@ namespace Controls
 
                 currentXValue += block.Width + blockMarginX;
             }
+        }
+
+        private static Size EstimateSize(TextBlock textBlock)
+        {
+            var formattedText = new FormattedText(
+                textBlock.Text,
+                CultureInfo.CurrentCulture,
+                textBlock.FlowDirection,
+                new Typeface(textBlock.FontFamily, textBlock.FontStyle, textBlock.FontWeight, textBlock.FontStretch),
+                textBlock.FontSize,
+                textBlock.Foreground);
+
+            return new Size(formattedText.Width, formattedText.Height);
         }
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
