@@ -18,8 +18,8 @@ namespace Controls
         public static readonly DependencyProperty ColumnBrushProperty =
             DependencyProperty.Register(nameof(ColumnBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
 
-        public static readonly DependencyProperty StrokeBrushProperty =
-            DependencyProperty.Register(nameof(StrokeBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
+        public static readonly DependencyProperty StrokeProperty =
+            DependencyProperty.Register(nameof(Stroke), typeof(SolidColorBrush), typeof(_2DColumnChart));
 
         public static readonly DependencyProperty StrokeThicknessProperty =
             DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(_2DColumnChart));
@@ -27,7 +27,7 @@ namespace Controls
         public _2DColumnChart()
         {
             ColumnBrush = Brushes.Gold;
-            StrokeBrush = Brushes.LightGray;
+            Stroke = Brushes.LightGray;
             StrokeThickness = 1;
 
             InitializeComponent();
@@ -55,10 +55,10 @@ namespace Controls
             set => SetValue(ColumnBrushProperty, value);
         }
 
-        public SolidColorBrush StrokeBrush
+        public SolidColorBrush Stroke
         {
-            get => (SolidColorBrush)GetValue(StrokeBrushProperty);
-            set => SetValue(StrokeBrushProperty, value);
+            get => (SolidColorBrush)GetValue(StrokeProperty);
+            set => SetValue(StrokeProperty, value);
         }
 
         public double StrokeThickness
@@ -85,7 +85,7 @@ namespace Controls
 
             var yAxisStartLine = new Line
             {
-                Stroke = StrokeBrush,
+                Stroke = Stroke,
                 StrokeThickness = StrokeThickness,
                 X1 = yAxisEndPoint.X,
                 Y1 = yAxisEndPoint.Y,
@@ -96,7 +96,7 @@ namespace Controls
 
             var yAxisEndLine = new Line
             {
-                Stroke = StrokeBrush,
+                Stroke = Stroke,
                 StrokeThickness = StrokeThickness,
                 X1 = xAxisEndPoint.X,
                 Y1 = xAxisEndPoint.Y,
@@ -111,7 +111,7 @@ namespace Controls
             {
                 var yLine = new Line
                 {
-                    Stroke = StrokeBrush,
+                    Stroke = Stroke,
                     StrokeThickness = StrokeThickness,
                     X1 = origin.X,
                     Y1 = yAxisValue,
