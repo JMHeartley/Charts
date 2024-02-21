@@ -87,7 +87,9 @@ namespace Controls
             if (chartWidth <= 0
                 || double.IsNaN(chartWidth)
                 || chartHeight <= 0
-                || double.IsNaN(chartHeight))
+                || double.IsNaN(chartHeight)
+                || Items is null
+                || !Items.Any())
             {
                 return;
             }
