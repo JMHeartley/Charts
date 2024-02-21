@@ -90,7 +90,7 @@ namespace Controls
             var chartInnerHeight = chartHeight - chartPadding * 2;
             const float originalBlockWidthRatio = 0.583333f;
             var blockWidth = chartWidth / Items.Count * originalBlockWidthRatio;
-            var blockMargin = (chartWidth / Items.Count - blockWidth) / 2;
+            var blockMarginX = (chartWidth / Items.Count - blockWidth) / 2;
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
 
@@ -155,7 +155,7 @@ namespace Controls
             }
 
             var heightValueScale = chartInnerHeight / Items.Max(item => item.Value);
-            var currentXValue = origin.X + blockMargin;
+            var currentXValue = origin.X + blockMarginX;
             foreach (var item in Items)
             {
                 var block = new Rectangle
@@ -182,7 +182,7 @@ namespace Controls
                 Canvas.SetLeft(blockHeader, currentXValue);
                 Canvas.SetTop(blockHeader, origin.Y + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
-                currentXValue += block.Width + blockMargin;
+                currentXValue += block.Width + blockMarginX;
             }
         }
     }
