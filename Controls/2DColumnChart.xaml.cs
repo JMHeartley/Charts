@@ -141,7 +141,7 @@ namespace Controls
                 yValue += yAxisInterval;
             }
 
-            var margin = origin.X + blockMargin;
+            var currentLeftPosition = origin.X + blockMargin;
             foreach (var item in Items)
             {
                 var block = new Rectangle
@@ -152,7 +152,7 @@ namespace Controls
                 };
 
                 MainCanvas.Children.Add(block);
-                Canvas.SetLeft(block, margin);
+                Canvas.SetLeft(block, currentLeftPosition);
                 Canvas.SetTop(block, origin.Y - block.Height);
 
                 var blockHeader = new TextBlock
@@ -165,10 +165,10 @@ namespace Controls
                     TextWrapping = TextWrapping.Wrap
                 };
                 MainCanvas.Children.Add(blockHeader);
-                Canvas.SetLeft(blockHeader, margin);
+                Canvas.SetLeft(blockHeader, currentLeftPosition);
                 Canvas.SetTop(blockHeader, origin.Y + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
-                margin += blockWidth + blockMargin;
+                currentLeftPosition += blockWidth + blockMargin;
             }
         }
     }
