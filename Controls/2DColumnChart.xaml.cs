@@ -111,17 +111,17 @@ namespace Controls
             MainCanvas.Children.Add(yAxisEndLine);
 
             double yValue = 0;
-            var yAxisValue = origin.Y;
-            while (yAxisValue >= yAxisEndPoint.Y)
+            var currentYValue = origin.Y;
+            while (currentYValue >= yAxisEndPoint.Y)
             {
                 var yLine = new Line
                 {
                     Stroke = Stroke,
                     StrokeThickness = StrokeThickness,
                     X1 = origin.X,
-                    Y1 = yAxisValue,
+                    Y1 = currentYValue,
                     X2 = xAxisEndPoint.X,
-                    Y2 = yAxisValue
+                    Y2 = currentYValue
                 };
                 MainCanvas.Children.Add(yLine);
 
@@ -136,12 +136,12 @@ namespace Controls
                 MainCanvas.Children.Add(yAxisTextBlock);
 
                 Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlock.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
-                Canvas.SetTop(yAxisTextBlock, yAxisValue - 12.5);
+                Canvas.SetTop(yAxisTextBlock, currentYValue - 12.5);
 
                 var intervalCount = 8;
                 var intervalYValue = innerChartHeight / intervalCount;
                 var intervalValue = Items.Max(item => item.Value) / intervalCount;
-                yAxisValue -= intervalYValue;
+                currentYValue -= intervalYValue;
                 yValue += intervalValue;
             }
 
