@@ -81,7 +81,7 @@ namespace Controls
         {
             float chartWidth = 1200;
             float chartHeight = 700;
-            float axisMargin = 100;
+            float chartPadding = 100;
             float yAxisInterval = 50;
             const float originalBlockWidthRatio = 0.583333f;
             var blockWidth = chartWidth / Items.Count * originalBlockWidthRatio;
@@ -89,9 +89,9 @@ namespace Controls
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
 
-            var yAxisEndPoint = new Point(axisMargin, axisMargin);
-            var origin = new Point(axisMargin, chartHeight - axisMargin);
-            var xAxisEndPoint = new Point(chartWidth - axisMargin, chartHeight - axisMargin);
+            var yAxisEndPoint = new Point(chartPadding, chartPadding);
+            var origin = new Point(chartPadding, chartHeight - chartPadding);
+            var xAxisEndPoint = new Point(chartWidth - chartPadding, chartHeight - chartPadding);
 
             var yAxisStartLine = new Line
             {
