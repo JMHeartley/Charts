@@ -146,7 +146,7 @@ namespace Controls
             }
 
             var heightValueScale = innerChartHeight / Items.Max(item => item.Value);
-            var currentLeftPosition = origin.X + blockMargin;
+            var currentXValue = origin.X + blockMargin;
             foreach (var item in Items)
             {
                 var block = new Rectangle
@@ -157,7 +157,7 @@ namespace Controls
                 };
 
                 MainCanvas.Children.Add(block);
-                Canvas.SetLeft(block, currentLeftPosition);
+                Canvas.SetLeft(block, currentXValue);
                 Canvas.SetTop(block, origin.Y - block.Height);
 
                 var blockHeader = new TextBlock
@@ -170,10 +170,10 @@ namespace Controls
                     TextWrapping = TextWrapping.Wrap
                 };
                 MainCanvas.Children.Add(blockHeader);
-                Canvas.SetLeft(blockHeader, currentLeftPosition);
+                Canvas.SetLeft(blockHeader, currentXValue);
                 Canvas.SetTop(blockHeader, origin.Y + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
-                currentLeftPosition += block.Width + blockMargin;
+                currentXValue += block.Width + blockMargin;
             }
         }
     }
