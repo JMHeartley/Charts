@@ -84,6 +84,14 @@ namespace Controls
 
         private void Paint(double chartWidth, double chartHeight)
         {
+            if (chartWidth <= 0
+                || double.IsNaN(chartWidth)
+                || chartHeight <= 0
+                || double.IsNaN(chartHeight))
+            {
+                return;
+            }
+
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
 
