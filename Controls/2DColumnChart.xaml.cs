@@ -161,14 +161,14 @@ namespace Controls
                     FontSize = FontSize,
                     Foreground = Foreground,
                     TextAlignment = TextAlignment.Center,
-                    Width = blockWidth,
+                    Width = block.Width,
                     TextWrapping = TextWrapping.Wrap
                 };
                 MainCanvas.Children.Add(blockHeader);
                 Canvas.SetLeft(blockHeader, currentLeftPosition);
                 Canvas.SetTop(blockHeader, origin.Y + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
-                currentLeftPosition += blockWidth + blockMargin;
+                currentLeftPosition += block.Width + blockMargin;
             }
         }
     }
