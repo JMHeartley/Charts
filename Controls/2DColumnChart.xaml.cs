@@ -32,12 +32,16 @@ namespace Controls
         public static readonly DependencyProperty IntervalCountProperty =
             DependencyProperty.Register(nameof(IntervalCount), typeof(int), typeof(_2DColumnChart));
 
+        public static readonly DependencyProperty InnerPaddingProperty =
+            DependencyProperty.Register(nameof(InnerPadding), typeof(float), typeof(_2DColumnChart));
+
         public _2DColumnChart()
         {
             ColumnBrush = Brushes.Gold;
             Stroke = Brushes.LightGray;
             StrokeThickness = 1;
             IntervalCount = 8;
+            InnerPadding = 100;
 
             InitializeComponent();
         }
@@ -85,15 +89,20 @@ namespace Controls
             set => SetValue(IntervalCountProperty, value);
         }
 
+        public float InnerPadding
+        {
+            get => (float)GetValue(InnerPaddingProperty);
+            set => SetValue(InnerPaddingProperty, value);
+        }
+
         private void Paint(float chartWidth, float chartHeight)
         {
-            float chartPadding = 100;
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
 
-            var yAxisEndPoint = new Point(chartPadding, chartPadding);
-            var origin = new Point(chartPadding, chartHeight - chartPadding);
-            var xAxisEndPoint = new Point(chartWidth - chartPadding, chartHeight - chartPadding);
+            var yAxisEndPoint = new Point(InnerPadding, InnerPadding);
+            var origin = new Point(InnerPadding, chartHeight - InnerPadding);
+            var xAxisEndPoint = new Point(chartWidth - InnerPadding, chartHeight - InnerPadding);
 
             var yAxisStartLine = new Line
             {
@@ -117,7 +126,7 @@ namespace Controls
             };
             MainCanvas.Children.Add(yAxisEndLine);
 
-            var chartInnerHeight = chartHeight - chartPadding * 2;
+            var chartInnerHeight = chartHeight - InnerPadding * 2;
             double yValue = 0;
             var currentYValue = origin.Y;
             while (currentYValue >= yAxisEndPoint.Y)
