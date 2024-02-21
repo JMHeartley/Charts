@@ -33,7 +33,7 @@ namespace Controls
             DependencyProperty.Register(nameof(IntervalCount), typeof(int), typeof(_2DColumnChart));
 
         public static readonly DependencyProperty InnerPaddingProperty =
-            DependencyProperty.Register(nameof(InnerPadding), typeof(float), typeof(_2DColumnChart));
+            DependencyProperty.Register(nameof(InnerPadding), typeof(Thickness), typeof(_2DColumnChart));
 
         public _2DColumnChart()
         {
@@ -41,7 +41,7 @@ namespace Controls
             Stroke = Brushes.LightGray;
             StrokeThickness = 1;
             IntervalCount = 8;
-            InnerPadding = 100;
+            InnerPadding = new Thickness(100);
 
             InitializeComponent();
         }
@@ -76,9 +76,9 @@ namespace Controls
             set => SetValue(IntervalCountProperty, value);
         }
 
-        public float InnerPadding
+        public Thickness InnerPadding
         {
-            get => (float)GetValue(InnerPaddingProperty);
+            get => (Thickness)GetValue(InnerPaddingProperty);
             set => SetValue(InnerPaddingProperty, value);
         }
 
@@ -95,9 +95,9 @@ namespace Controls
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
 
-            var yAxisEndPoint = new Point(InnerPadding, InnerPadding);
-            var origin = new Point(InnerPadding, chartHeight - InnerPadding);
-            var xAxisEndPoint = new Point(chartWidth - InnerPadding, chartHeight - InnerPadding);
+            var yAxisEndPoint = new Point(InnerPadding.Left, InnerPadding.Top);
+            var origin = new Point(InnerPadding.Left, chartHeight - InnerPadding.Bottom);
+            var xAxisEndPoint = new Point(chartWidth - InnerPadding.Right, chartHeight - InnerPadding.Bottom);
 
             var yAxisStartLine = new Line
             {
@@ -121,7 +121,7 @@ namespace Controls
             };
             MainCanvas.Children.Add(yAxisEndLine);
 
-            var chartInnerHeight = chartHeight - InnerPadding * 2;
+            var chartInnerHeight = chartHeight - InnerPadding.Top - InnerPadding.Bottom;
             double yValue = 0;
             var currentYValue = origin.Y;
             while (currentYValue >= yAxisEndPoint.Y)
@@ -158,7 +158,7 @@ namespace Controls
 
             var heightValueScale = chartInnerHeight / Items.Max(item => item.Value);
             const float originalBlockWidthRatio = 0.583333f;
-            var chartInnerWidth = chartWidth - InnerPadding * 2;
+            var chartInnerWidth = chartWidth - InnerPadding.Left - InnerPadding.Right;
             var blockWidth = chartInnerWidth / Items.Count * originalBlockWidthRatio;
             var blockMarginX = (chartInnerWidth / Items.Count - blockWidth) / 2;
             var currentXValue = origin.X;
