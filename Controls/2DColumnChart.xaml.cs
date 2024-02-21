@@ -18,9 +18,6 @@ namespace Controls
         public static readonly DependencyProperty ColumnBrushProperty =
             DependencyProperty.Register(nameof(ColumnBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
 
-        public static readonly DependencyProperty ForegroundBrushProperty =
-            DependencyProperty.Register(nameof(ForegroundBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
-
         public static readonly DependencyProperty StrokeBrushProperty =
             DependencyProperty.Register(nameof(StrokeBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
 
@@ -30,7 +27,6 @@ namespace Controls
         public _2DColumnChart()
         {
             ColumnBrush = Brushes.Gold;
-            ForegroundBrush = Brushes.Black;
             StrokeBrush = Brushes.LightGray;
             StrokeThickness = 1;
 
@@ -57,12 +53,6 @@ namespace Controls
         {
             get => (SolidColorBrush)GetValue(ColumnBrushProperty);
             set => SetValue(ColumnBrushProperty, value);
-        }
-
-        public SolidColorBrush ForegroundBrush
-        {
-            get => (SolidColorBrush)GetValue(ForegroundBrushProperty);
-            set => SetValue(ForegroundBrushProperty, value);
         }
 
         public SolidColorBrush StrokeBrush
@@ -133,7 +123,7 @@ namespace Controls
                 var yAxisTextBlock = new TextBlock
                 {
                     Text = $"{yValue}",
-                    Foreground = ForegroundBrush,
+                    Foreground = Foreground,
                     FontSize = FontSize,
                     Width = 30,
                     TextAlignment = TextAlignment.Right
@@ -165,7 +155,7 @@ namespace Controls
                 {
                     Text = item.Header,
                     FontSize = FontSize,
-                    Foreground = ForegroundBrush,
+                    Foreground = Foreground,
                     TextAlignment = TextAlignment.Center,
                     Width = blockWidth,
                     TextWrapping = TextWrapping.Wrap
