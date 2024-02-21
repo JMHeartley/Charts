@@ -1,5 +1,6 @@
 ﻿using Controls.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -76,7 +77,7 @@ namespace Controls
             float chartWidth = 1200;
             float chartHeight = 700;
             float chartPadding = 100;
-            float yAxisInterval = 50;
+            var innerChartHeight = chartHeight - chartPadding * 2;
             const float originalBlockWidthRatio = 0.583333f;
             var blockWidth = chartWidth / Items.Count * originalBlockWidthRatio;
             var blockMargin = (chartWidth / Items.Count - blockWidth) / 2;
@@ -137,10 +138,14 @@ namespace Controls
                 Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlock.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
                 Canvas.SetTop(yAxisTextBlock, yAxisValue - 12.5);
 
-                yAxisValue -= yAxisInterval;
-                yValue += yAxisInterval;
+                var intervalCount = 8;
+                var intervalYValue = innerChartHeight / intervalCount;
+                var intervalValue = Items.Max(item => item.Value) / intervalCount;
+                yAxisValue -= intervalYValue;
+                yValue += intervalValue;
             }
 
+            var heightValueScale = innerChartHeight / Items.Max(item => item.Value);
             var currentLeftPosition = origin.X + blockMargin;
             foreach (var item in Items)
             {
@@ -148,7 +153,7 @@ namespace Controls
                 {
                     Fill = ColumnBrush,
                     Width = blockWidth,
-                    Height = item.Value
+                    Height = heightValueScale * item.Value
                 };
 
                 MainCanvas.Children.Add(block);
