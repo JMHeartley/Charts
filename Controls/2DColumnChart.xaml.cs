@@ -87,10 +87,6 @@ namespace Controls
             float chartWidth = 1200;
             float chartHeight = 700;
             float chartPadding = 100;
-            var chartInnerHeight = chartHeight - chartPadding * 2;
-            const float originalBlockWidthRatio = 0.583333f;
-            var blockWidth = chartWidth / Items.Count * originalBlockWidthRatio;
-            var blockMarginX = (chartWidth / Items.Count - blockWidth) / 2;
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
 
@@ -120,6 +116,7 @@ namespace Controls
             };
             MainCanvas.Children.Add(yAxisEndLine);
 
+            var chartInnerHeight = chartHeight - chartPadding * 2;
             double yValue = 0;
             var currentYValue = origin.Y;
             while (currentYValue >= yAxisEndPoint.Y)
@@ -155,6 +152,9 @@ namespace Controls
             }
 
             var heightValueScale = chartInnerHeight / Items.Max(item => item.Value);
+            const float originalBlockWidthRatio = 0.583333f;
+            var blockWidth = chartWidth / Items.Count * originalBlockWidthRatio;
+            var blockMarginX = (chartWidth / Items.Count - blockWidth) / 2;
             var currentXValue = origin.X + blockMarginX;
             foreach (var item in Items)
             {
