@@ -87,7 +87,7 @@ namespace Controls
             float chartWidth = 1200;
             float chartHeight = 700;
             float chartPadding = 100;
-            var innerChartHeight = chartHeight - chartPadding * 2;
+            var chartInnerHeight = chartHeight - chartPadding * 2;
             const float originalBlockWidthRatio = 0.583333f;
             var blockWidth = chartWidth / Items.Count * originalBlockWidthRatio;
             var blockMargin = (chartWidth / Items.Count - blockWidth) / 2;
@@ -148,13 +148,13 @@ namespace Controls
                 Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlock.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
                 Canvas.SetTop(yAxisTextBlock, currentYValue - 12.5);
 
-                var intervalYValue = innerChartHeight / IntervalCount;
+                var intervalYValue = chartInnerHeight / IntervalCount;
                 var intervalValue = Items.Max(item => item.Value) / IntervalCount;
                 currentYValue -= intervalYValue;
                 yValue += intervalValue;
             }
 
-            var heightValueScale = innerChartHeight / Items.Max(item => item.Value);
+            var heightValueScale = chartInnerHeight / Items.Max(item => item.Value);
             var currentXValue = origin.X + blockMargin;
             foreach (var item in Items)
             {
