@@ -29,11 +29,15 @@ namespace Controls
         public static readonly DependencyProperty StrokeThicknessProperty =
             DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(_2DColumnChart));
 
+        public static readonly DependencyProperty IntervalCountProperty =
+            DependencyProperty.Register(nameof(IntervalCount), typeof(int), typeof(_2DColumnChart));
+
         public _2DColumnChart()
         {
             ColumnBrush = Brushes.Gold;
             Stroke = Brushes.LightGray;
             StrokeThickness = 1;
+            IntervalCount = 8;
 
             InitializeComponent();
         }
@@ -70,6 +74,12 @@ namespace Controls
         {
             get => (double)GetValue(StrokeThicknessProperty);
             set => SetValue(StrokeThicknessProperty, value);
+        }
+
+        public int IntervalCount
+        {
+            get => (int)GetValue(IntervalCountProperty);
+            set => SetValue(IntervalCountProperty, value);
         }
 
         private void Paint()
@@ -138,9 +148,8 @@ namespace Controls
                 Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlock.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
                 Canvas.SetTop(yAxisTextBlock, currentYValue - 12.5);
 
-                var intervalCount = 8;
-                var intervalYValue = innerChartHeight / intervalCount;
-                var intervalValue = Items.Max(item => item.Value) / intervalCount;
+                var intervalYValue = innerChartHeight / IntervalCount;
+                var intervalValue = Items.Max(item => item.Value) / IntervalCount;
                 currentYValue -= intervalYValue;
                 yValue += intervalValue;
             }
