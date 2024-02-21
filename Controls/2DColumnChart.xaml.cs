@@ -162,10 +162,12 @@ namespace Controls
             var maxValue = (int)Math.Ceiling(Items.Max(item => item.Value) / (double)IntervalCount) * IntervalCount;
 
             var chartInnerHeight = chartHeight - InnerPadding.Top - InnerPadding.Bottom;
-            double yValue = 0;
-            var currentYValue = origin.Y;
-            while (currentYValue >= yAxisEndPoint.Y)
+            var intervalYValue = chartInnerHeight / IntervalCount;
+            var intervalValue = maxValue / IntervalCount;
+            for (var currentIntervalNumber = 0; currentIntervalNumber <= IntervalCount; currentIntervalNumber++)
             {
+                var currentYValue = origin.Y - intervalYValue * currentIntervalNumber;
+
                 var yLine = new Line
                 {
                     Stroke = Stroke,
@@ -179,7 +181,7 @@ namespace Controls
 
                 var yAxisTextBlock = new TextBlock
                 {
-                    Text = $"{yValue}",
+                    Text = $"{intervalValue * currentIntervalNumber}",
                     Foreground = Foreground,
                     FontSize = FontSize,
                     TextAlignment = TextAlignment.Right
@@ -189,11 +191,6 @@ namespace Controls
                 var yAxisTextBlockEstimatedSize = EstimateSize(yAxisTextBlock);
                 Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlockEstimatedSize.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
                 Canvas.SetTop(yAxisTextBlock, currentYValue - yAxisTextBlockEstimatedSize.Height / 2);
-
-                var intervalYValue = chartInnerHeight / IntervalCount;
-                var intervalValue = maxValue / IntervalCount;
-                currentYValue -= intervalYValue;
-                yValue += intervalValue;
             }
 
             var heightValueScale = chartInnerHeight / maxValue;
