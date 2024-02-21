@@ -134,7 +134,7 @@ namespace Controls
                 {
                     Text = $"{yValue}",
                     Foreground = ForegroundBrush,
-                    FontSize = 16,
+                    FontSize = FontSize,
                     Width = 30,
                     TextAlignment = TextAlignment.Right
                 };
@@ -164,7 +164,7 @@ namespace Controls
                 var blockHeader = new TextBlock
                 {
                     Text = item.Header,
-                    FontSize = 16,
+                    FontSize = FontSize,
                     Foreground = ForegroundBrush,
                     TextAlignment = TextAlignment.Center,
                     Width = blockWidth,
