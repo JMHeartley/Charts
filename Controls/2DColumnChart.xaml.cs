@@ -1,4 +1,5 @@
 ﻿using Controls.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -158,6 +159,8 @@ namespace Controls
             };
             MainCanvas.Children.Add(yAxisEndLine);
 
+            var maxValue = (int)Math.Ceiling(Items.Max(item => item.Value) / (double)IntervalCount) * IntervalCount;
+
             var chartInnerHeight = chartHeight - InnerPadding.Top - InnerPadding.Bottom;
             double yValue = 0;
             var currentYValue = origin.Y;
@@ -188,12 +191,12 @@ namespace Controls
                 Canvas.SetTop(yAxisTextBlock, currentYValue - yAxisTextBlockEstimatedSize.Height / 2);
 
                 var intervalYValue = chartInnerHeight / IntervalCount;
-                var intervalValue = Items.Max(item => item.Value) / IntervalCount;
+                var intervalValue = maxValue / IntervalCount;
                 currentYValue -= intervalYValue;
                 yValue += intervalValue;
             }
 
-            var heightValueScale = chartInnerHeight / Items.Max(item => item.Value);
+            var heightValueScale = chartInnerHeight / maxValue;
             const float originalBlockWidthRatio = 0.583333f;
             var chartInnerWidth = chartWidth - InnerPadding.Left - InnerPadding.Right;
             var blockWidth = chartInnerWidth / Items.Count * originalBlockWidthRatio;

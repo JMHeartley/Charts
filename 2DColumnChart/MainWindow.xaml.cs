@@ -12,7 +12,7 @@ namespace _2DColumnChart
         {
             InitializeComponent();
 
-            ColumnChart.Items = TestColumnItems.Case3;
+            ColumnChart.Items = TestColumnItems.Case4;
         }
     }
 }

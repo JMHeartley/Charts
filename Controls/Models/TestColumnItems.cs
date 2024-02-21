@@ -53,10 +53,6 @@ namespace Controls.Models
             new ColumnItem { Header = "Item3", Value = 75 },
             new ColumnItem { Header = "Item4", Value = 135 },
             new ColumnItem { Header = "Item5", Value = 300 },
-            new ColumnItem { Header = "Item6", Value = 400 },
-            new ColumnItem { Header = "Item7", Value = 360 },
-            new ColumnItem { Header = "Item8", Value = 499 },
-            new ColumnItem { Header = "Item9", Value = 233 },
             new ColumnItem { Header = "Item10", Value = 122 }
         };
     }
