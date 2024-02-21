@@ -158,11 +158,14 @@ namespace Controls
 
             var heightValueScale = chartInnerHeight / Items.Max(item => item.Value);
             const float originalBlockWidthRatio = 0.583333f;
-            var blockWidth = chartWidth / Items.Count * originalBlockWidthRatio;
-            var blockMarginX = (chartWidth / Items.Count - blockWidth) / 2;
-            var currentXValue = origin.X + blockMarginX;
+            var chartInnerWidth = chartWidth - InnerPadding * 2;
+            var blockWidth = chartInnerWidth / Items.Count * originalBlockWidthRatio;
+            var blockMarginX = (chartInnerWidth / Items.Count - blockWidth) / 2;
+            var currentXValue = origin.X;
             foreach (var item in Items)
             {
+                currentXValue += blockMarginX;
+
                 var block = new Rectangle
                 {
                     Fill = ColumnBrush,
