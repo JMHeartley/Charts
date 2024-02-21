@@ -102,6 +102,40 @@ namespace Controls
             var origin = new Point(InnerPadding.Left, chartHeight - InnerPadding.Bottom);
             var xAxisEndPoint = new Point(chartWidth - InnerPadding.Right, chartHeight - InnerPadding.Bottom);
 
+            #region for illustration
+
+            //var yAxisEndPointEllipse = new Ellipse
+            //{
+            //    Fill = Brushes.Red,
+            //    Width = 10,
+            //    Height = 10
+            //};
+            //MainCanvas.Children.Add(yAxisEndPointEllipse);
+            //Canvas.SetLeft(yAxisEndPointEllipse, yAxisEndPoint.X - yAxisEndPointEllipse.Width / 2);
+            //Canvas.SetTop(yAxisEndPointEllipse, yAxisEndPoint.Y - yAxisEndPointEllipse.Width / 2);
+
+            //var originEllipse = new Ellipse
+            //{
+            //    Fill = Brushes.Purple,
+            //    Width = 10,
+            //    Height = 10
+            //};
+            //MainCanvas.Children.Add(originEllipse);
+            //Canvas.SetLeft(originEllipse, origin.X - originEllipse.Width / 2);
+            //Canvas.SetTop(originEllipse, origin.Y - originEllipse.Height / 2);
+
+            //var xAxisEndPointEllipse = new Ellipse
+            //{
+            //    Fill = Brushes.Blue,
+            //    Width = 10,
+            //    Height = 10
+            //};
+            //MainCanvas.Children.Add(xAxisEndPointEllipse);
+            //Canvas.SetLeft(xAxisEndPointEllipse, xAxisEndPoint.X - xAxisEndPointEllipse.Width / 2);
+            //Canvas.SetTop(xAxisEndPointEllipse, xAxisEndPoint.Y - xAxisEndPointEllipse.Height / 2);
+
+            #endregion
+
             var yAxisStartLine = new Line
             {
                 Stroke = Stroke,
