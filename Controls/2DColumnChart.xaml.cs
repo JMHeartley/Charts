@@ -54,7 +54,10 @@ namespace Controls
                     return;
                 }
 
-                Paint();
+                const float chartWidth = 1200;
+                const float chartHeight = 700;
+
+                Paint(chartWidth, chartHeight);
             }
         }
 
@@ -82,10 +85,8 @@ namespace Controls
             set => SetValue(IntervalCountProperty, value);
         }
 
-        private void Paint()
+        private void Paint(float chartWidth, float chartHeight)
         {
-            float chartWidth = 1200;
-            float chartHeight = 700;
             float chartPadding = 100;
             MainCanvas.Width = chartWidth;
             MainCanvas.Height = chartHeight;
