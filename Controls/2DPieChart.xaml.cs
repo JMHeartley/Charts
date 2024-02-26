@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -34,23 +35,7 @@ namespace Controls
         public List<PieCategory> Categories
         {
             get => (List<PieCategory>)GetValue(CategoriesProperty);
-            set
-            {
-                SetValue(CategoriesProperty, value);
-
-                if (Categories is null)
-                {
-                    return;
-                }
-
-                const float pieWidth = 650;
-                const float pieHeight = 650;
-
-                MainCanvas.Width = pieWidth;
-                MainCanvas.Height = pieHeight;
-
-                CreateChart(pieWidth, pieHeight);
-            }
+            set => SetValue(CategoriesProperty, value);
         }
 
         public SolidColorBrush StrokeBrush
@@ -65,11 +50,29 @@ namespace Controls
             set => SetValue(StrokeThicknessProperty, value);
         }
 
-        private void CreateChart(float pieWidth, float pieHeight)
+        private void CreateChart()
         {
-            var centerX = pieWidth / 2;
-            var centerY = pieHeight / 2;
-            var radius = pieWidth / 2;
+            double chartSize;
+            if (MainCanvas.ActualWidth > MainCanvas.ActualHeight)
+            {
+                chartSize = MainCanvas.ActualHeight;
+            }
+            else
+            {
+                chartSize = MainCanvas.ActualWidth;
+            }
+
+            if (chartSize <= 0
+                || double.IsNaN(chartSize)
+                || Categories is null
+                || !Categories.Any())
+            {
+                return;
+            }
+
+            var centerX = chartSize / 2;
+            var centerY = chartSize / 2;
+            var radius = chartSize / 2;
 
             var angle = 0f;
             var previousAngle = 0f;
@@ -137,6 +140,13 @@ namespace Controls
                 MainCanvas.Children.Add(outline1);
                 MainCanvas.Children.Add(outline2);
             }
+        }
+
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            MainCanvas.Children.Clear();
+
+            CreateChart();
         }
     }
 }
