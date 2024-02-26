@@ -16,7 +16,7 @@ namespace Controls
     public partial class _2DPieChart : UserControl
     {
         public static readonly DependencyProperty CategoriesProperty =
-            DependencyProperty.Register(nameof(Categories), typeof(List<PieCategory>), typeof(_2DPieChart));
+            DependencyProperty.Register(nameof(Categories), typeof(ICollection<PieCategory>), typeof(_2DPieChart));
 
         public static readonly DependencyProperty StrokeBrushProperty =
             DependencyProperty.Register(nameof(StrokeBrush), typeof(SolidColorBrush), typeof(_2DPieChart));
@@ -32,9 +32,9 @@ namespace Controls
             InitializeComponent();
         }
 
-        public List<PieCategory> Categories
+        public ICollection<PieCategory> Categories
         {
-            get => (List<PieCategory>)GetValue(CategoriesProperty);
+            get => (ICollection<PieCategory>)GetValue(CategoriesProperty);
             set => SetValue(CategoriesProperty, value);
         }
 
