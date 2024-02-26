@@ -20,7 +20,7 @@ namespace Controls
         private const int Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN = 10;
 
         public static readonly DependencyProperty ItemsProperty =
-            DependencyProperty.Register(nameof(Items), typeof(List<ColumnItem>), typeof(_2DColumnChart));
+            DependencyProperty.Register(nameof(Items), typeof(ICollection<ColumnItem>), typeof(_2DColumnChart));
 
         public static readonly DependencyProperty ColumnBrushProperty =
             DependencyProperty.Register(nameof(ColumnBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
@@ -48,9 +48,9 @@ namespace Controls
             InitializeComponent();
         }
 
-        public List<ColumnItem> Items
+        public ICollection<ColumnItem> Items
         {
-            get => (List<ColumnItem>)GetValue(ItemsProperty);
+            get => (ICollection<ColumnItem>)GetValue(ItemsProperty);
             set => SetValue(ItemsProperty, value);
         }
 
