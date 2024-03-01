@@ -74,6 +74,26 @@ namespace Controls
             var centerY = chartSize / 2;
             var radius = chartSize / 2;
 
+            if (Categories.Any(category => (int)category.Percentage == 100))
+            {
+                var fullPieCategory = Categories.Single(category => (int)category.Percentage == 100);
+
+                var fullCircle = new Ellipse
+                {
+                    Width = radius * 2,
+                    Height = radius * 2,
+                    Fill = fullPieCategory.ColorBrush,
+                    Stroke = StrokeBrush,
+                    StrokeThickness = StrokeThickness
+                };
+
+                Canvas.SetLeft(fullCircle, centerX - radius);
+                Canvas.SetTop(fullCircle, centerY - radius);
+
+                MainCanvas.Children.Add(fullCircle);
+                return;
+            }
+
             var angle = 0f;
             var previousAngle = 0f;
             foreach (var category in Categories)
