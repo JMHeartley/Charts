@@ -49,8 +49,10 @@ namespace Controls
             set => SetValue(StrokeThicknessProperty, value);
         }
 
-        private void CreateChart()
+        private void RedrawPieChart()
         {
+            MainCanvas.Children.Clear();
+
             var centerX = MainCanvas.ActualWidth / 2;
             var centerY = MainCanvas.ActualHeight / 2;
             var radius = Math.Min(centerX, centerY);
@@ -160,11 +162,6 @@ namespace Controls
             }
         }
 
-        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            MainCanvas.Children.Clear();
-
-            CreateChart();
-        }
+        private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e) => RedrawPieChart();
     }
 }
