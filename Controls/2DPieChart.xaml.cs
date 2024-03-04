@@ -1,7 +1,6 @@
 ﻿using Controls.Models;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -102,7 +101,6 @@ namespace Controls
                 var previousAngleLineY = radius * Math.Sin(previousAngle * Math.PI / 180) + centerY;
 
                 var newAngle = category.Percentage * 360 / 100 + previousAngle;
-                Debug.WriteLine($"The current angle is {newAngle} degrees");
 
                 var arcX = radius * Math.Cos(newAngle * Math.PI / 180) + centerX;
                 var arcY = radius * Math.Sin(newAngle * Math.PI / 180) + centerY;
