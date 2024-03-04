@@ -98,8 +98,8 @@ namespace Controls
 
             float DrawSlice(float previousAngle, PieCategory category)
             {
-                var line1X = radius * Math.Cos(previousAngle * Math.PI / 180) + centerX;
-                var line1Y = radius * Math.Sin(previousAngle * Math.PI / 180) + centerY;
+                var previousAngleLineX = radius * Math.Cos(previousAngle * Math.PI / 180) + centerX;
+                var previousAngleLineY = radius * Math.Sin(previousAngle * Math.PI / 180) + centerY;
 
                 var newAngle = category.Percentage * 360 / 100 + previousAngle;
                 Debug.WriteLine($"The current angle is {newAngle} degrees");
@@ -107,7 +107,7 @@ namespace Controls
                 var arcX = radius * Math.Cos(newAngle * Math.PI / 180) + centerX;
                 var arcY = radius * Math.Sin(newAngle * Math.PI / 180) + centerY;
 
-                var line1Segment = new LineSegment(new Point(line1X, line1Y), isStroked: false);
+                var previousAngleLineSegment = new LineSegment(new Point(previousAngleLineX, previousAngleLineY), isStroked: false);
                 var arcSegment = new ArcSegment
                 {
                     Size = new Size(radius, radius),
@@ -115,15 +115,15 @@ namespace Controls
                     SweepDirection = SweepDirection.Clockwise,
                     IsLargeArc = category.Percentage > 50
                 };
-                var line2Segment = new LineSegment(new Point(centerX, centerY), isStroked: false);
+                var newAngleLineSegment = new LineSegment(new Point(centerX, centerY), isStroked: false);
 
                 var pathFigure = new PathFigure(
                     new Point(centerX, centerY),
                     new List<PathSegment>
                     {
-                        line1Segment,
+                        previousAngleLineSegment,
                         arcSegment,
-                        line2Segment
+                        newAngleLineSegment
                     },
                     closed: true);
 
@@ -140,8 +140,8 @@ namespace Controls
                 {
                     X1 = centerX,
                     Y1 = centerY,
-                    X2 = line1Segment.Point.X,
-                    Y2 = line1Segment.Point.Y,
+                    X2 = previousAngleLineSegment.Point.X,
+                    Y2 = previousAngleLineSegment.Point.Y,
                     Stroke = StrokeBrush,
                     StrokeThickness = StrokeThickness
                 };
