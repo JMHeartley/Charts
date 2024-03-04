@@ -70,6 +70,15 @@ namespace Controls
                 return;
             }
 
+            var accumulatedPercentage = Categories.Select(category => category.Percentage)
+                .Aggregate((accumulatePercentage, currentPercentage) => accumulatePercentage + currentPercentage);
+            if ((int)accumulatedPercentage != 100)
+            {
+                MessageBox.Show($"Total percentage must be 100, {nameof(Categories)} added up to {accumulatedPercentage}.",
+                    "Unable to Draw Pie Chart", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             var centerX = chartSize / 2;
             var centerY = chartSize / 2;
             var radius = chartSize / 2;
