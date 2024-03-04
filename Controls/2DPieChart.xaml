@@ -39,18 +39,15 @@
                                        VerticalAlignment="Center" />
 
                             <TextBlock Text="{Binding Title}"
-                                       FontSize="20"
                                        VerticalAlignment="Center" />
 
                             <TextBlock Text="{Binding Percentage}"
                                        Foreground="{Binding ColorBrush}"
-                                       FontSize="20"
                                        Margin="20,0,0,0"
                                        VerticalAlignment="Center" />
 
                             <TextBlock Text="%"
                                        Foreground="{Binding ColorBrush}"
-                                       FontSize="20"
                                        VerticalAlignment="Center" />
                         </StackPanel>
                     </DataTemplate>
