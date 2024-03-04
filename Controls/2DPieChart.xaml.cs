@@ -52,18 +52,12 @@ namespace Controls
 
         private void CreateChart()
         {
-            double chartSize;
-            if (MainCanvas.ActualWidth > MainCanvas.ActualHeight)
-            {
-                chartSize = MainCanvas.ActualHeight;
-            }
-            else
-            {
-                chartSize = MainCanvas.ActualWidth;
-            }
+            var centerX = MainCanvas.ActualWidth / 2;
+            var centerY = MainCanvas.ActualHeight / 2;
+            var radius = Math.Min(centerX, centerY);
 
-            if (chartSize <= 0
-                || double.IsNaN(chartSize)
+            if (radius <= 0
+                || double.IsNaN(radius)
                 || Categories is null
                 || !Categories.Any())
             {
@@ -78,10 +72,6 @@ namespace Controls
                     "Unable to Draw Pie Chart", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-
-            var centerX = chartSize / 2;
-            var centerY = chartSize / 2;
-            var radius = chartSize / 2;
 
             if (Categories.Any(category => (int)category.Percentage == 100))
             {
