@@ -34,14 +34,14 @@ namespace Controls.Models
             new PieCategory
             {
                 Title = "Category#01",
-                Percentage = 20,
+                Percentage = 0,
                 ColorBrush = Brushes.Gold
             },
 
             new PieCategory
             {
                 Title = "Category#02",
-                Percentage = 80,
+                Percentage = 100,
                 ColorBrush = Brushes.LightBlue
             }
         };
@@ -89,14 +89,14 @@ namespace Controls.Models
             new PieCategory
             {
                 Title = "Category#04",
-                Percentage = 20,
+                Percentage = 5,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#5B9BD5"))
             },
 
             new PieCategory
             {
                 Title = "Category#05",
-                Percentage = 10,
+                Percentage = 15,
                 ColorBrush = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#A5A5A5"))
             }
         };
