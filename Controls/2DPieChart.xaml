@@ -21,6 +21,7 @@
 
         <ScrollViewer Grid.Column="1"
                       Margin="20,0"
+                      SizeChanged="LegendColumn_OnSizeChanged"
                       Padding="10"
                       VerticalAlignment="Center"
                       VerticalScrollBarVisibility="Auto"

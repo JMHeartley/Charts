@@ -163,5 +163,11 @@ namespace Controls
         }
 
         private void UserControl_SizeChanged(object sender, SizeChangedEventArgs e) => RedrawPieChart();
+
+        private void LegendColumn_OnSizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            // ensure chart is redrawn after legend is populated / size is initialized
+            RedrawPieChart();
+        }
     }
 }
