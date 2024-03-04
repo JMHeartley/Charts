@@ -93,20 +93,19 @@ namespace Controls
                 return;
             }
 
-            var angle = 0f;
-            var previousAngle = 0f;
-            foreach (var category in Categories)
+            Categories.Aggregate(seed: 0f, (previousAngle, category) => DrawSlice(previousAngle, category));
+            return;
+
+            float DrawSlice(float previousAngle, PieCategory category)
             {
-                var line1X = radius * Math.Cos(angle * Math.PI / 180) + centerX;
-                var line1Y = radius * Math.Sin(angle * Math.PI / 180) + centerY;
+                var line1X = radius * Math.Cos(previousAngle * Math.PI / 180) + centerX;
+                var line1Y = radius * Math.Sin(previousAngle * Math.PI / 180) + centerY;
 
-                angle = category.Percentage * 360 / 100 + previousAngle;
-                Debug.WriteLine($"The current angle is {angle} degrees");
+                var newAngle = category.Percentage * 360 / 100 + previousAngle;
+                Debug.WriteLine($"The current angle is {newAngle} degrees");
 
-                previousAngle = angle;
-
-                var arcX = radius * Math.Cos(angle * Math.PI / 180) + centerX;
-                var arcY = radius * Math.Sin(angle * Math.PI / 180) + centerY;
+                var arcX = radius * Math.Cos(newAngle * Math.PI / 180) + centerX;
+                var arcY = radius * Math.Sin(newAngle * Math.PI / 180) + centerY;
 
                 var line1Segment = new LineSegment(new Point(line1X, line1Y), isStroked: false);
                 var arcSegment = new ArcSegment
@@ -158,6 +157,8 @@ namespace Controls
 
                 MainCanvas.Children.Add(outline1);
                 MainCanvas.Children.Add(outline2);
+
+                return newAngle;
             }
         }
 
