@@ -27,6 +27,7 @@ namespace Controls
         {
             StrokeBrush = Brushes.White;
             StrokeThickness = 5;
+            FontSize = 20;
 
             InitializeComponent();
         }
