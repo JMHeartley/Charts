@@ -1,4 +1,5 @@
 ﻿using Controls.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -45,8 +46,8 @@ namespace Controls
         public static readonly DependencyProperty ValueLineStrokeThicknessProperty =
             DependencyProperty.Register(nameof(ValueLineStrokeThickness), typeof(double), typeof(LineChart));
 
-        private readonly List<LineHolder> holders = new List<LineHolder>();
-        private readonly double interval = 100;
+        private readonly int XIntervalCount = 12;
+        private readonly int YIntervalCount = 12;
 
         public LineChart()
         {
@@ -121,7 +122,6 @@ namespace Controls
         public void Paint()
         {
             ChartCanvas.Children.Clear();
-            holders.Clear();
 
             if (ActualWidth <= 0
                 || ActualHeight <= 0
@@ -131,8 +131,6 @@ namespace Controls
                 return;
             }
 
-
-            // axis lines
             var xAxisLine = new Line
             {
                 X1 = InnerPadding.Left,
@@ -163,16 +161,26 @@ namespace Controls
             Canvas.SetLeft(xTextBlock0, origin.X - xTextBlock0EstimatedSize.Width / 2);
             Canvas.SetTop(xTextBlock0, origin.Y + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
-            // y axis lines
-            var xValue = InnerPadding.Left;
-            var xPoint = origin.X + interval;
-            while (xPoint < xAxisLine.X2)
+            var xMaxValue = Values.Max(value => value.X);
+            if (xMaxValue % XIntervalCount != 0)
             {
+                xMaxValue = (int)Math.Ceiling(xMaxValue / XIntervalCount) * XIntervalCount;
+            }
+
+            var xIntervalNumberToValueRatio = xMaxValue / XIntervalCount;
+
+            var chartInnerWidth = xAxisLine.X2 - xAxisLine.X1;
+            var xIntervalNumberToPositionRatio = chartInnerWidth / XIntervalCount;
+
+            for (var currentXIntervalNumber = 1; currentXIntervalNumber <= XIntervalCount; currentXIntervalNumber++)
+            {
+                var currentXPosition = origin.X + currentXIntervalNumber * xIntervalNumberToPositionRatio;
+
                 var line = new Line
                 {
-                    X1 = xPoint,
+                    X1 = currentXPosition,
                     Y1 = yAxisLine.Y1,
-                    X2 = xPoint,
+                    X2 = currentXPosition,
                     Y2 = yAxisLine.Y2,
                     Stroke = GridLineStrokeBrush,
                     StrokeThickness = GridLineStrokeThickness,
@@ -180,17 +188,13 @@ namespace Controls
                 };
                 ChartCanvas.Children.Add(line);
 
-                var textBlock = new TextBlock { Text = $"{xValue}" };
+                var textBlock = new TextBlock { Text = $"{currentXIntervalNumber * xIntervalNumberToValueRatio}" };
                 ChartCanvas.Children.Add(textBlock);
 
                 var textBlockEstimatedSize = EstimateSize(textBlock);
-                Canvas.SetLeft(textBlock, xPoint - textBlockEstimatedSize.Width / 2);
+                Canvas.SetLeft(textBlock, currentXPosition - textBlockEstimatedSize.Width / 2);
                 Canvas.SetTop(textBlock, line.Y2 + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
-
-                xPoint += interval;
-                xValue += interval;
             }
-
 
             var yTextBlock0 = new TextBlock { Text = "0" };
             ChartCanvas.Children.Add(yTextBlock0);
@@ -198,63 +202,40 @@ namespace Controls
             Canvas.SetLeft(yTextBlock0, origin.X - yTextBlock0EstimatedSize.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
             Canvas.SetTop(yTextBlock0, origin.Y - yTextBlock0EstimatedSize.Height / 2);
 
-            // x axis lines
-            var yValue = InnerPadding.Top;
-            var yPoint = origin.Y - interval;
-            while (yPoint > yAxisLine.Y1)
+            var yMaxValue = Values.Max(value => value.Y);
+            if (yMaxValue % YIntervalCount != 0)
             {
+                yMaxValue = (int)Math.Ceiling(yMaxValue / YIntervalCount) * YIntervalCount;
+            }
+
+            var yIntervalNumberToValueRatio = yMaxValue / YIntervalCount;
+
+            var chartInnerHeight = yAxisLine.Y2 - yAxisLine.Y1;
+            var yIntervalNumberToPositionRatio = chartInnerHeight / YIntervalCount;
+
+            for (var currentYIntervalNumber = 1; currentYIntervalNumber <= YIntervalCount; currentYIntervalNumber++)
+            {
+                var currentYPosition = origin.Y - currentYIntervalNumber * yIntervalNumberToPositionRatio;
                 var line = new Line
                 {
                     X1 = xAxisLine.X1,
-                    Y1 = yPoint,
+                    Y1 = currentYPosition,
                     X2 = xAxisLine.X2,
-                    Y2 = yPoint,
+                    Y2 = currentYPosition,
                     Stroke = GridLineStrokeBrush,
                     StrokeThickness = GridLineStrokeThickness,
                     Opacity = GridLineOpacity
                 };
                 ChartCanvas.Children.Add(line);
 
-                var textBlock = new TextBlock { Text = $"{yValue}" };
+                var textBlock = new TextBlock { Text = $"{currentYIntervalNumber * yIntervalNumberToValueRatio}" };
                 ChartCanvas.Children.Add(textBlock);
 
                 var textBlockEstimatedSize = EstimateSize(textBlock);
                 Canvas.SetLeft(textBlock, line.X1 - textBlockEstimatedSize.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
-                Canvas.SetTop(textBlock, yPoint - textBlockEstimatedSize.Height / 2);
-
-                yPoint -= interval;
-                yValue += interval;
+                Canvas.SetTop(textBlock, currentYPosition - textBlockEstimatedSize.Height / 2);
             }
 
-            // connections
-            var x = 0d;
-            var y = 0d;
-            xPoint = origin.X;
-            yPoint = origin.Y;
-            while (xPoint < xAxisLine.X2)
-            {
-                while (yPoint > yAxisLine.Y1)
-                {
-                    var holder = new LineHolder
-                    {
-                        X = x,
-                        Y = y,
-                        Point = new Point(xPoint, yPoint)
-                    };
-
-                    holders.Add(holder);
-
-                    yPoint -= interval;
-                    y += interval;
-                }
-
-                xPoint += interval;
-                yPoint = origin.Y;
-                x += 100;
-                y = 0;
-            }
-
-            // polyline
             var chartPolyline = new Polyline
             {
                 Stroke = ValueLineStrokeBrush,
@@ -262,30 +243,15 @@ namespace Controls
             };
             ChartCanvas.Children.Add(chartPolyline);
 
-            // showing where are the connections points
-            foreach (var holder in holders)
-            {
-                var oEllipse = new Ellipse
-                {
-                    Fill = Brushes.Red,
-                    Width = 10,
-                    Height = 10,
-                    Opacity = 0
-                };
-
-                ChartCanvas.Children.Add(oEllipse);
-                Canvas.SetLeft(oEllipse, holder.Point.X - oEllipse.Width / 2);
-                Canvas.SetTop(oEllipse, holder.Point.Y - oEllipse.Height / 2);
-            }
-
-            // add connection points to polyline
+            var xValueToPositionRatio = chartInnerWidth / xMaxValue;
+            var yValueToPositionRatio = chartInnerHeight / yMaxValue;
             foreach (var value in Values)
             {
-                var holder = holders.FirstOrDefault(h => h.X == value.X && h.Y == value.Y);
-                if (holder != default)
+                chartPolyline.Points.Add(new Point
                 {
-                    chartPolyline.Points.Add(holder.Point);
-                }
+                    X = origin.X + value.X * xValueToPositionRatio,
+                    Y = origin.Y - value.Y * yValueToPositionRatio
+                });
             }
         }
 
