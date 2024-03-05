@@ -193,8 +193,9 @@ namespace Controls
 
             var yTextBlock0 = new TextBlock { Text = "0" };
             ChartCanvas.Children.Add(yTextBlock0);
-            Canvas.SetLeft(yTextBlock0, origin.X - 20);
-            Canvas.SetTop(yTextBlock0, origin.Y - 10);
+            var yTextBlock0EstimatedSize = EstimateSize(yTextBlock0);
+            Canvas.SetLeft(yTextBlock0, origin.X - yTextBlock0EstimatedSize.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
+            Canvas.SetTop(yTextBlock0, origin.Y - yTextBlock0EstimatedSize.Height / 2);
 
             // x axis lines
             var yValue = InnerPadding.Top;
