@@ -104,7 +104,10 @@ namespace Controls
 
         public void Paint()
         {
-            if (ActualWidth <= 0 || ActualHeight <= 0)
+            if (ActualWidth <= 0
+                || ActualHeight <= 0
+                || Values is null
+                || !Values.Any())
             {
                 return;
             }
