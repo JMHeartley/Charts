@@ -270,8 +270,8 @@ namespace Controls
                 };
 
                 ChartCanvas.Children.Add(oEllipse);
-                Canvas.SetLeft(oEllipse, holder.Point.X - 5);
-                Canvas.SetTop(oEllipse, holder.Point.Y - 5);
+                Canvas.SetLeft(oEllipse, holder.Point.X - oEllipse.Width / 2);
+                Canvas.SetTop(oEllipse, holder.Point.Y - oEllipse.Height / 2);
             }
 
             // add connection points to polyline
