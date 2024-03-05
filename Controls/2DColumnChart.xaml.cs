@@ -166,26 +166,26 @@ namespace WPFChartControls
             }
 
             var chartInnerHeight = chartHeight - InnerPadding.Top - InnerPadding.Bottom;
-            var intervalYValue = chartInnerHeight / IntervalCount;
-            var intervalValue = maxValue / IntervalCount;
+            var intervalNumberToYPositionRatio = chartInnerHeight / IntervalCount;
+            var intervalNumberToValueRatio = maxValue / IntervalCount;
             for (var currentIntervalNumber = 0; currentIntervalNumber <= IntervalCount; currentIntervalNumber++)
             {
-                var currentYValue = origin.Y - intervalYValue * currentIntervalNumber;
+                var currentYPosition = origin.Y - currentIntervalNumber * intervalNumberToYPositionRatio;
 
                 var yLine = new Line
                 {
                     Stroke = Stroke,
                     StrokeThickness = StrokeThickness,
                     X1 = origin.X,
-                    Y1 = currentYValue,
+                    Y1 = currentYPosition,
                     X2 = xAxisEndPoint.X,
-                    Y2 = currentYValue
+                    Y2 = currentYPosition
                 };
                 MainCanvas.Children.Add(yLine);
 
                 var yAxisTextBlock = new TextBlock
                 {
-                    Text = $"{intervalValue * currentIntervalNumber}",
+                    Text = $"{currentIntervalNumber * intervalNumberToValueRatio}",
                     Foreground = Foreground,
                     FontSize = FontSize,
                     TextAlignment = TextAlignment.Right
@@ -194,7 +194,7 @@ namespace WPFChartControls
 
                 var yAxisTextBlockEstimatedSize = EstimateSize(yAxisTextBlock);
                 Canvas.SetLeft(yAxisTextBlock, origin.X - yAxisTextBlockEstimatedSize.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
-                Canvas.SetTop(yAxisTextBlock, currentYValue - yAxisTextBlockEstimatedSize.Height / 2);
+                Canvas.SetTop(yAxisTextBlock, currentYPosition - yAxisTextBlockEstimatedSize.Height / 2);
             }
 
             var heightValueScale = chartInnerHeight / maxValue;
