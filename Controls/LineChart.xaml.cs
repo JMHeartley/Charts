@@ -13,6 +13,8 @@ namespace Controls
     /// </summary>
     public partial class LineChart : UserControl
     {
+        private const int X_AXIS_TEXT_BLOCK_TOP_MARGIN = 5;
+
         public static readonly DependencyProperty ValuesProperty =
             DependencyProperty.Register(nameof(Values), typeof(ICollection<LineValue>), typeof(LineChart));
 
@@ -155,7 +157,7 @@ namespace Controls
             var xTextBlock0 = new TextBlock { Text = "0" };
             ChartCanvas.Children.Add(xTextBlock0);
             Canvas.SetLeft(xTextBlock0, origin.X);
-            Canvas.SetTop(xTextBlock0, origin.Y + 5);
+            Canvas.SetTop(xTextBlock0, origin.Y + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
             // y axis lines
             var xValue = InnerPadding.Left;
@@ -179,7 +181,7 @@ namespace Controls
 
                 ChartCanvas.Children.Add(textBlock);
                 Canvas.SetLeft(textBlock, xPoint - 12.5);
-                Canvas.SetTop(textBlock, line.Y2 + 5);
+                Canvas.SetTop(textBlock, line.Y2 + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
                 xPoint += interval;
                 xValue += interval;
