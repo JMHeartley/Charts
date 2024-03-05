@@ -16,6 +16,9 @@ namespace Controls
         public static readonly DependencyProperty ValuesProperty =
             DependencyProperty.Register(nameof(Values), typeof(ICollection<LineValue>), typeof(LineChart));
 
+        public static readonly DependencyProperty AxisStrokeBrushProperty =
+            DependencyProperty.Register(nameof(AxisStrokeBrush), typeof(SolidColorBrush), typeof(LineChart));
+
         private readonly List<LineHolder> holders;
         private readonly double interval = 100;
         private readonly List<LineValue> values;
@@ -28,6 +31,8 @@ namespace Controls
 
         public LineChart()
         {
+            AxisStrokeBrush = Brushes.LightGray;
+
             InitializeComponent();
 
             holders = new List<LineHolder>();
@@ -43,6 +48,13 @@ namespace Controls
             get => (ICollection<LineValue>)GetValue(ValuesProperty);
             set => SetValue(ValuesProperty, value);
         }
+
+        public SolidColorBrush AxisStrokeBrush
+        {
+            get => (SolidColorBrush)GetValue(AxisStrokeBrushProperty);
+            set => SetValue(AxisStrokeBrushProperty, value);
+        }
+
 
         public void Paint()
         {
@@ -61,7 +73,7 @@ namespace Controls
                 Y1 = ActualHeight - yAxisStart,
                 X2 = ActualWidth - xAxisStart,
                 Y2 = ActualHeight - yAxisStart,
-                Stroke = Brushes.LightGray,
+                Stroke = AxisStrokeBrush,
                 StrokeThickness = 1
             };
             yAxisLine = new Line
@@ -70,7 +82,7 @@ namespace Controls
                 Y1 = yAxisStart - 50,
                 X2 = xAxisStart,
                 Y2 = ActualHeight - yAxisStart,
-                Stroke = Brushes.LightGray,
+                Stroke = AxisStrokeBrush,
                 StrokeThickness = 1
             };
 
