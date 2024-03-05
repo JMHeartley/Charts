@@ -145,7 +145,7 @@ namespace Controls
             var yAxisLine = new Line
             {
                 X1 = InnerPadding.Left,
-                Y1 = InnerPadding.Top - 50,
+                Y1 = InnerPadding.Top,
                 X2 = InnerPadding.Right,
                 Y2 = ActualHeight - InnerPadding.Bottom,
                 Stroke = AxisStrokeBrush,
