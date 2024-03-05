@@ -262,7 +262,7 @@ namespace Controls
             foreach (var value in Values)
             {
                 var holder = holders.FirstOrDefault(h => h.X == value.X && h.Y == value.Y);
-                if (holder != null)
+                if (holder != default)
                 {
                     chartPolyline.Points.Add(holder.Point);
                 }
