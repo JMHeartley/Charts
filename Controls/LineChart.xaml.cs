@@ -209,13 +209,14 @@ namespace Controls
                     StrokeThickness = GridLineStrokeThickness,
                     Opacity = GridLineOpacity
                 };
-
                 ChartCanvas.Children.Add(line);
 
                 var textBlock = new TextBlock { Text = $"{yValue}" };
                 ChartCanvas.Children.Add(textBlock);
+
+                var textBlockEstimatedSize = EstimateSize(textBlock);
                 Canvas.SetLeft(textBlock, line.X1 - 30);
-                Canvas.SetTop(textBlock, yPoint - 10);
+                Canvas.SetTop(textBlock, yPoint - textBlockEstimatedSize.Height / 2);
 
                 yPoint -= interval;
                 yValue += interval;
