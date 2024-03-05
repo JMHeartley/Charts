@@ -160,7 +160,7 @@ namespace Controls
             MainCanvas.Children.Add(yAxisEndLine);
 
             var maxValue = Items.Max(item => item.Value);
-            if (maxValue % IntervalCount == 0)
+            if (maxValue % IntervalCount != 0)
             {
                 maxValue = (int)Math.Ceiling(maxValue / (double)IntervalCount) * IntervalCount;
             }
