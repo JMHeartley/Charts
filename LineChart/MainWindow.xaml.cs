@@ -29,51 +29,7 @@ namespace LineChart
             InitializeComponent();
 
             holders = new List<LineHolder>();
-            values = new List<LineValue>
-            {
-                //new LineValue(0,0),
-                //new LineValue(100,100),
-                //new LineValue(200,200),
-                //new LineValue(300,300),
-                //new LineValue(400,200),
-                //new LineValue(500,500),
-                //new LineValue(600,500),
-                //new LineValue(700,500),
-                //new LineValue(800,500),
-                //new LineValue(900,600),
-                //new LineValue(1000,200),
-                //new LineValue(1100,100),
-                //new LineValue(1200,400),
-
-                //new LineValue(0,0),
-                //new LineValue(100,200),
-                //new LineValue(200,100),
-                //new LineValue(300,200),
-                //new LineValue(400,300),
-                //new LineValue(500,400),
-                //new LineValue(600,500),
-                //new LineValue(700,400),
-                //new LineValue(800,500),
-                //new LineValue(900,600),
-                //new LineValue(1000,300),
-                //new LineValue(1100,100),
-                //new LineValue(1200,400),
-
-                new LineValue(x: 0, y: 0),
-                new LineValue(x: 100, y: 100),
-                new LineValue(x: 200, y: 400),
-                new LineValue(x: 300, y: 200),
-                new LineValue(x: 400, y: 400),
-                new LineValue(x: 500, y: 300),
-                new LineValue(x: 600, y: 100),
-                new LineValue(x: 700, y: 700),
-                new LineValue(x: 800, y: 200),
-                new LineValue(x: 900, y: 600),
-                new LineValue(x: 1000, y: 600),
-                new LineValue(x: 1100, y: 0),
-                new LineValue(x: 1200, y: 100),
-                new LineValue(x: 1300, y: 100)
-            };
+            values = TestLineValues.Case3;
 
             Paint();
 

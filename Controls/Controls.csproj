@@ -58,6 +58,7 @@
     <Compile Include="Models\LineValue.cs" />
     <Compile Include="Models\PieCategory.cs" />
     <Compile Include="Models\TestColumnItems.cs" />
+    <Compile Include="Models\TestLineValues.cs" />
     <Compile Include="Models\TestPieCategories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
