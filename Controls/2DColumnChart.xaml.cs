@@ -159,9 +159,11 @@ namespace Controls
             };
             MainCanvas.Children.Add(yAxisEndLine);
 
-            var maxValue = Items.Max(item => item.Value) % IntervalCount == 0
-                ? Items.Max(item => item.Value)
-                : (int)Math.Ceiling(Items.Max(item => item.Value) / (double)IntervalCount) * IntervalCount;
+            var maxValue = Items.Max(item => item.Value);
+            if (maxValue % IntervalCount == 0)
+            {
+                maxValue = (int)Math.Ceiling(maxValue / (double)IntervalCount) * IntervalCount;
+            }
 
             var chartInnerHeight = chartHeight - InnerPadding.Top - InnerPadding.Bottom;
             var intervalYValue = chartInnerHeight / IntervalCount;
