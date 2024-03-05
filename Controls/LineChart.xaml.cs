@@ -31,11 +31,12 @@ namespace Controls
         public static readonly DependencyProperty GridLineOpacityProperty =
             DependencyProperty.Register(nameof(GridLineOpacity), typeof(double), typeof(LineChart));
 
+        public static readonly DependencyProperty InnerPaddingProperty =
+            DependencyProperty.Register(nameof(InnerPadding), typeof(Thickness), typeof(LineChart));
+
         private readonly List<LineHolder> holders;
         private readonly double interval = 100;
         private readonly List<LineValue> values;
-        private readonly double xAxisStart = 100;
-        private readonly double yAxisStart = 100;
         private Polyline chartPolyline;
 
         private Point origin;
@@ -48,6 +49,7 @@ namespace Controls
             GridLineStrokeBrush = Brushes.LightGray;
             GridLineStrokeThickness = 10;
             GridLineOpacity = 1;
+            InnerPadding = new Thickness(100);
 
             InitializeComponent();
 
@@ -95,6 +97,12 @@ namespace Controls
             set => SetValue(GridLineOpacityProperty, value);
         }
 
+        public Thickness InnerPadding
+        {
+            get => (Thickness)GetValue(InnerPaddingProperty);
+            set => SetValue(InnerPaddingProperty, value);
+        }
+
         public void Paint()
         {
             if (ActualWidth <= 0 || ActualHeight <= 0)
@@ -108,19 +116,19 @@ namespace Controls
             // axis lines
             xAxisLine = new Line
             {
-                X1 = xAxisStart,
-                Y1 = ActualHeight - yAxisStart,
-                X2 = ActualWidth - xAxisStart,
-                Y2 = ActualHeight - yAxisStart,
+                X1 = InnerPadding.Left,
+                Y1 = ActualHeight - InnerPadding.Bottom,
+                X2 = ActualWidth - InnerPadding.Right,
+                Y2 = ActualHeight - InnerPadding.Bottom,
                 Stroke = AxisStrokeBrush,
                 StrokeThickness = AxisStrokeThickness
             };
             yAxisLine = new Line
             {
-                X1 = xAxisStart,
-                Y1 = yAxisStart - 50,
-                X2 = xAxisStart,
-                Y2 = ActualHeight - yAxisStart,
+                X1 = InnerPadding.Left,
+                Y1 = InnerPadding.Top - 50,
+                X2 = InnerPadding.Right,
+                Y2 = ActualHeight - InnerPadding.Bottom,
                 Stroke = AxisStrokeBrush,
                 StrokeThickness = AxisStrokeThickness
             };
@@ -136,16 +144,16 @@ namespace Controls
             Canvas.SetTop(xTextBlock0, origin.Y + 5);
 
             // y axis lines
-            var xValue = xAxisStart;
+            var xValue = InnerPadding.Left;
             var xPoint = origin.X + interval;
             while (xPoint < xAxisLine.X2)
             {
                 var line = new Line
                 {
                     X1 = xPoint,
-                    Y1 = yAxisStart - 50,
+                    Y1 = yAxisLine.Y1,
                     X2 = xPoint,
-                    Y2 = ActualHeight - yAxisStart,
+                    Y2 = yAxisLine.Y2,
                     Stroke = GridLineStrokeBrush,
                     StrokeThickness = GridLineStrokeThickness,
                     Opacity = GridLineOpacity
@@ -170,15 +178,15 @@ namespace Controls
             Canvas.SetTop(yTextBlock0, origin.Y - 10);
 
             // x axis lines
-            var yValue = yAxisStart;
+            var yValue = InnerPadding.Top;
             var yPoint = origin.Y - interval;
             while (yPoint > yAxisLine.Y1)
             {
                 var line = new Line
                 {
-                    X1 = xAxisStart,
+                    X1 = xAxisLine.X1,
                     Y1 = yPoint,
-                    X2 = ActualWidth - xAxisStart,
+                    X2 = xAxisLine.X2,
                     Y2 = yPoint,
                     Stroke = GridLineStrokeBrush,
                     StrokeThickness = GridLineStrokeThickness,
