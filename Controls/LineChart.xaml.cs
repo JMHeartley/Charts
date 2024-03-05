@@ -131,35 +131,7 @@ namespace Controls
                 return;
             }
 
-            var xAxisLine = new Line
-            {
-                X1 = InnerPadding.Left,
-                Y1 = ActualHeight - InnerPadding.Bottom,
-                X2 = ActualWidth - InnerPadding.Right,
-                Y2 = ActualHeight - InnerPadding.Bottom,
-                Stroke = AxisStrokeBrush,
-                StrokeThickness = AxisStrokeThickness
-            };
-            var yAxisLine = new Line
-            {
-                X1 = InnerPadding.Left,
-                Y1 = InnerPadding.Top,
-                X2 = InnerPadding.Right,
-                Y2 = ActualHeight - InnerPadding.Bottom,
-                Stroke = AxisStrokeBrush,
-                StrokeThickness = AxisStrokeThickness
-            };
-
-            ChartCanvas.Children.Add(xAxisLine);
-            ChartCanvas.Children.Add(yAxisLine);
-
-            var origin = new Point(xAxisLine.X1, yAxisLine.Y2);
-
-            var xTextBlock0 = new TextBlock { Text = "0" };
-            ChartCanvas.Children.Add(xTextBlock0);
-            var xTextBlock0EstimatedSize = EstimateSize(xTextBlock0);
-            Canvas.SetLeft(xTextBlock0, origin.X - xTextBlock0EstimatedSize.Width / 2);
-            Canvas.SetTop(xTextBlock0, origin.Y + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
+            var origin = new Point(InnerPadding.Left, ActualHeight - InnerPadding.Bottom);
 
             var xMaxValue = Values.Max(value => value.X);
             if (xMaxValue % XIntervalCount != 0)
@@ -169,21 +141,22 @@ namespace Controls
 
             var xIntervalNumberToValueRatio = xMaxValue / XIntervalCount;
 
-            var chartInnerWidth = xAxisLine.X2 - xAxisLine.X1;
+            var chartInnerWidth = ActualWidth - InnerPadding.Left - InnerPadding.Right;
             var xIntervalNumberToPositionRatio = chartInnerWidth / XIntervalCount;
 
-            for (var currentXIntervalNumber = 1; currentXIntervalNumber <= XIntervalCount; currentXIntervalNumber++)
+            for (var currentXIntervalNumber = 0; currentXIntervalNumber <= XIntervalCount; currentXIntervalNumber++)
             {
                 var currentXPosition = origin.X + currentXIntervalNumber * xIntervalNumberToPositionRatio;
+                var isChartBorder = currentXIntervalNumber == 0 || currentXIntervalNumber == XIntervalCount;
 
                 var line = new Line
                 {
                     X1 = currentXPosition,
-                    Y1 = yAxisLine.Y1,
+                    Y1 = InnerPadding.Top,
                     X2 = currentXPosition,
-                    Y2 = yAxisLine.Y2,
-                    Stroke = GridLineStrokeBrush,
-                    StrokeThickness = GridLineStrokeThickness,
+                    Y2 = origin.Y,
+                    Stroke = isChartBorder ? AxisStrokeBrush : GridLineStrokeBrush,
+                    StrokeThickness = isChartBorder ? AxisStrokeThickness : GridLineStrokeThickness,
                     Opacity = GridLineOpacity
                 };
                 ChartCanvas.Children.Add(line);
@@ -196,12 +169,6 @@ namespace Controls
                 Canvas.SetTop(textBlock, line.Y2 + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
             }
 
-            var yTextBlock0 = new TextBlock { Text = "0" };
-            ChartCanvas.Children.Add(yTextBlock0);
-            var yTextBlock0EstimatedSize = EstimateSize(yTextBlock0);
-            Canvas.SetLeft(yTextBlock0, origin.X - yTextBlock0EstimatedSize.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
-            Canvas.SetTop(yTextBlock0, origin.Y - yTextBlock0EstimatedSize.Height / 2);
-
             var yMaxValue = Values.Max(value => value.Y);
             if (yMaxValue % YIntervalCount != 0)
             {
@@ -210,20 +177,22 @@ namespace Controls
 
             var yIntervalNumberToValueRatio = yMaxValue / YIntervalCount;
 
-            var chartInnerHeight = yAxisLine.Y2 - yAxisLine.Y1;
+            var chartInnerHeight = ActualHeight - InnerPadding.Top - InnerPadding.Bottom;
             var yIntervalNumberToPositionRatio = chartInnerHeight / YIntervalCount;
 
-            for (var currentYIntervalNumber = 1; currentYIntervalNumber <= YIntervalCount; currentYIntervalNumber++)
+            for (var currentYIntervalNumber = 0; currentYIntervalNumber <= YIntervalCount; currentYIntervalNumber++)
             {
                 var currentYPosition = origin.Y - currentYIntervalNumber * yIntervalNumberToPositionRatio;
+                var isChartBorder = currentYIntervalNumber == 0 || currentYIntervalNumber == YIntervalCount;
+
                 var line = new Line
                 {
-                    X1 = xAxisLine.X1,
+                    X1 = origin.X,
                     Y1 = currentYPosition,
-                    X2 = xAxisLine.X2,
+                    X2 = ActualWidth - InnerPadding.Right,
                     Y2 = currentYPosition,
-                    Stroke = GridLineStrokeBrush,
-                    StrokeThickness = GridLineStrokeThickness,
+                    Stroke = isChartBorder ? AxisStrokeBrush : GridLineStrokeBrush,
+                    StrokeThickness = isChartBorder ? AxisStrokeThickness : GridLineStrokeThickness,
                     Opacity = GridLineOpacity
                 };
                 ChartCanvas.Children.Add(line);
