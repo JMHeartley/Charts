@@ -40,7 +40,8 @@ namespace Controls
         private Polyline chartPolyline;
 
         private Point origin;
-        private Line xAxisLine, yAxisLine;
+        private Line xAxisLine;
+        private Line yAxisLine;
 
         public LineChart()
         {
@@ -205,7 +206,8 @@ namespace Controls
             }
 
             // connections
-            double x = 0, y = 0;
+            var x = 0d;
+            var y = 0d;
             xPoint = origin.X;
             yPoint = origin.Y;
             while (xPoint < xAxisLine.X2)
