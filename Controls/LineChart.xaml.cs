@@ -1,5 +1,6 @@
 ﻿using Controls.Models;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -174,13 +175,13 @@ namespace Controls
                     StrokeThickness = GridLineStrokeThickness,
                     Opacity = GridLineOpacity
                 };
-
                 ChartCanvas.Children.Add(line);
 
                 var textBlock = new TextBlock { Text = $"{xValue}" };
-
                 ChartCanvas.Children.Add(textBlock);
-                Canvas.SetLeft(textBlock, xPoint - 12.5);
+
+                var textBlockEstimatedSize = EstimateSize(textBlock);
+                Canvas.SetLeft(textBlock, xPoint - textBlockEstimatedSize.Width / 2);
                 Canvas.SetTop(textBlock, line.Y2 + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
                 xPoint += interval;
@@ -281,6 +282,19 @@ namespace Controls
                     chartPolyline.Points.Add(holder.Point);
                 }
             }
+        }
+
+        private static Size EstimateSize(TextBlock textBlock)
+        {
+            var formattedText = new FormattedText(
+                textBlock.Text,
+                CultureInfo.CurrentCulture,
+                textBlock.FlowDirection,
+                new Typeface(textBlock.FontFamily, textBlock.FontStyle, textBlock.FontWeight, textBlock.FontStretch),
+                textBlock.FontSize,
+                textBlock.Foreground);
+
+            return new Size(formattedText.Width, formattedText.Height);
         }
     }
 }
