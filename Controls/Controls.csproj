@@ -54,6 +54,8 @@
       <DependentUpon>2DPieChart.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\ColumnItem.cs" />
+    <Compile Include="Models\LineHolder.cs" />
+    <Compile Include="Models\LineValue.cs" />
     <Compile Include="Models\PieCategory.cs" />
     <Compile Include="Models\TestColumnItems.cs" />
     <Compile Include="Models\TestPieCategories.cs" />
