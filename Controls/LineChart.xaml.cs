@@ -46,8 +46,11 @@ namespace Controls
         public static readonly DependencyProperty ValueLineStrokeThicknessProperty =
             DependencyProperty.Register(nameof(ValueLineStrokeThickness), typeof(double), typeof(LineChart));
 
-        private readonly int XIntervalCount = 12;
-        private readonly int YIntervalCount = 12;
+        public static readonly DependencyProperty XIntervalCountProperty =
+            DependencyProperty.Register(nameof(XIntervalCount), typeof(int), typeof(LineChart));
+
+        public static readonly DependencyProperty YIntervalCountProperty =
+            DependencyProperty.Register(nameof(YIntervalCount), typeof(int), typeof(LineChart));
 
         public LineChart()
         {
@@ -59,6 +62,8 @@ namespace Controls
             InnerPadding = new Thickness(100);
             ValueLineStrokeBrush = new SolidColorBrush(Color.FromRgb(r: 68, g: 114, b: 196));
             ValueLineStrokeThickness = 10;
+            XIntervalCount = 12;
+            YIntervalCount = 12;
 
             InitializeComponent();
 
@@ -117,6 +122,18 @@ namespace Controls
         {
             get => (double)GetValue(ValueLineStrokeThicknessProperty);
             set => SetValue(ValueLineStrokeThicknessProperty, value);
+        }
+
+        public int XIntervalCount
+        {
+            get => (int)GetValue(XIntervalCountProperty);
+            set => SetValue(XIntervalCountProperty, value);
+        }
+
+        public int YIntervalCount
+        {
+            get => (int)GetValue(YIntervalCountProperty);
+            set => SetValue(YIntervalCountProperty, value);
         }
 
         public void Paint()
