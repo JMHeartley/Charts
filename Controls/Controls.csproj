@@ -53,6 +53,9 @@
     <Compile Include="2DPieChart.xaml.cs">
       <DependentUpon>2DPieChart.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LineChart.xaml.cs">
+      <DependentUpon>LineChart.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\ColumnItem.cs" />
     <Compile Include="Models\LineHolder.cs" />
     <Compile Include="Models\LineValue.cs" />
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="2DPieChart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LineChart.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

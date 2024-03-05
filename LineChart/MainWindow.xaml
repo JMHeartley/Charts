@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LineChart"
+        xmlns:controls="clr-namespace:Controls;assembly=Controls"
         mc:Ignorable="d"
         Title="Line Chart" 
         Height="500" 
@@ -11,7 +12,6 @@
         WindowState="Maximized"
         WindowStartupLocation="CenterScreen">
     <Grid>
-        <Canvas x:Name="chartCanvas"
-                Background="White"/>
+       <controls:LineChart x:Name="LineChart" />
     </Grid>
 </Window>
