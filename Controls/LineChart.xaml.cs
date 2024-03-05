@@ -36,7 +36,6 @@ namespace Controls
 
         private readonly List<LineHolder> holders;
         private readonly double interval = 100;
-        private readonly List<LineValue> values;
         private Polyline chartPolyline;
 
         private Point origin;
@@ -55,7 +54,6 @@ namespace Controls
             InitializeComponent();
 
             holders = new List<LineHolder>();
-            values = TestLineValues.Case3;
 
             Paint();
 
@@ -258,7 +256,7 @@ namespace Controls
             }
 
             // add connection points to polyline
-            foreach (var value in values)
+            foreach (var value in Values)
             {
                 var holder = holders.FirstOrDefault(h => h.X == value.X && h.Y == value.Y);
                 if (holder != null)
