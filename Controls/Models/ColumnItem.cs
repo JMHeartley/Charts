@@ -1,4 +1,4 @@
-﻿namespace Controls.Models
+﻿namespace WPFChartControls.Models
 {
     public class ColumnItem
     {

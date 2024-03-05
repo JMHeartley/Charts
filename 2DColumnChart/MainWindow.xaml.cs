@@ -1,5 +1,5 @@
-﻿using Controls.Models;
-using System.Windows;
+﻿using System.Windows;
+using WPFChartControls.Models;
 
 namespace _2DColumnChart
 {

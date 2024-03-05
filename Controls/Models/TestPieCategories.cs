@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Media;
 
-namespace Controls.Models
+namespace WPFChartControls.Models
 {
     public static class TestPieCategories
     {

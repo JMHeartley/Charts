@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Controls.Models
+namespace WPFChartControls.Models
 {
     public static class TestColumnItems
     {

@@ -1,5 +1,4 @@
-﻿using Controls.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -7,8 +6,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using WPFChartControls.Models;
 
-namespace Controls
+namespace WPFChartControls
 {
     /// <summary>
     ///     Interaction logic for _2DColumnChart.xaml
