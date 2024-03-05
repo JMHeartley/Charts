@@ -34,6 +34,9 @@ namespace Controls
         public static readonly DependencyProperty InnerPaddingProperty =
             DependencyProperty.Register(nameof(InnerPadding), typeof(Thickness), typeof(LineChart));
 
+        public static readonly DependencyProperty ValueLineStrokeBrushProperty =
+            DependencyProperty.Register(nameof(ValueLineStrokeBrush), typeof(SolidColorBrush), typeof(LineChart));
+
         private readonly List<LineHolder> holders;
         private readonly double interval = 100;
         private Polyline chartPolyline;
@@ -50,6 +53,7 @@ namespace Controls
             GridLineStrokeThickness = 10;
             GridLineOpacity = 1;
             InnerPadding = new Thickness(100);
+            ValueLineStrokeBrush = new SolidColorBrush(Color.FromRgb(r: 68, g: 114, b: 196));
 
             InitializeComponent();
 
@@ -100,6 +104,12 @@ namespace Controls
         {
             get => (Thickness)GetValue(InnerPaddingProperty);
             set => SetValue(InnerPaddingProperty, value);
+        }
+
+        public SolidColorBrush ValueLineStrokeBrush
+        {
+            get => (SolidColorBrush)GetValue(ValueLineStrokeBrushProperty);
+            set => SetValue(ValueLineStrokeBrushProperty, value);
         }
 
         public void Paint()
@@ -237,7 +247,7 @@ namespace Controls
             // polyline
             chartPolyline = new Polyline
             {
-                Stroke = new SolidColorBrush(Color.FromRgb(r: 68, g: 114, b: 196)),
+                Stroke = ValueLineStrokeBrush,
                 StrokeThickness = 10
             };
             ChartCanvas.Children.Add(chartPolyline);
