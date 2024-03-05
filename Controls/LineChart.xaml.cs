@@ -100,7 +100,7 @@ namespace Controls
 
             origin = new Point(xAxisLine.X1, yAxisLine.Y2);
 
-            var xTextBlock0 = new TextBlock { Text = $"{0}" };
+            var xTextBlock0 = new TextBlock { Text = "0" };
             ChartCanvas.Children.Add(xTextBlock0);
             Canvas.SetLeft(xTextBlock0, origin.X);
             Canvas.SetTop(xTextBlock0, origin.Y + 5);
@@ -134,7 +134,7 @@ namespace Controls
             }
 
 
-            var yTextBlock0 = new TextBlock { Text = $"{0}" };
+            var yTextBlock0 = new TextBlock { Text = "0" };
             ChartCanvas.Children.Add(yTextBlock0);
             Canvas.SetLeft(yTextBlock0, origin.X - 20);
             Canvas.SetTop(yTextBlock0, origin.Y - 10);
