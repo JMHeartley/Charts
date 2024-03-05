@@ -40,7 +40,7 @@ namespace Controls
         public static readonly DependencyProperty ValueLineStrokeThicknessProperty =
             DependencyProperty.Register(nameof(ValueLineStrokeThickness), typeof(double), typeof(LineChart));
 
-        private readonly List<LineHolder> holders;
+        private readonly List<LineHolder> holders = new List<LineHolder>();
         private readonly double interval = 100;
         private Polyline chartPolyline;
 
@@ -60,8 +60,6 @@ namespace Controls
             ValueLineStrokeThickness = 10;
 
             InitializeComponent();
-
-            holders = new List<LineHolder>();
 
             SizeChanged += (sender, e) => Paint();
         }
