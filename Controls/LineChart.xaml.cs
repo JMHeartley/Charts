@@ -42,11 +42,6 @@ namespace Controls
 
         private readonly List<LineHolder> holders = new List<LineHolder>();
         private readonly double interval = 100;
-        private Polyline chartPolyline;
-
-        private Point origin;
-        private Line xAxisLine;
-        private Line yAxisLine;
 
         public LineChart()
         {
@@ -132,7 +127,7 @@ namespace Controls
             holders.Clear();
 
             // axis lines
-            xAxisLine = new Line
+            var xAxisLine = new Line
             {
                 X1 = InnerPadding.Left,
                 Y1 = ActualHeight - InnerPadding.Bottom,
@@ -141,7 +136,7 @@ namespace Controls
                 Stroke = AxisStrokeBrush,
                 StrokeThickness = AxisStrokeThickness
             };
-            yAxisLine = new Line
+            var yAxisLine = new Line
             {
                 X1 = InnerPadding.Left,
                 Y1 = InnerPadding.Top - 50,
@@ -154,7 +149,7 @@ namespace Controls
             ChartCanvas.Children.Add(xAxisLine);
             ChartCanvas.Children.Add(yAxisLine);
 
-            origin = new Point(xAxisLine.X1, yAxisLine.Y2);
+            var origin = new Point(xAxisLine.X1, yAxisLine.Y2);
 
             var xTextBlock0 = new TextBlock { Text = "0" };
             ChartCanvas.Children.Add(xTextBlock0);
@@ -251,7 +246,7 @@ namespace Controls
             }
 
             // polyline
-            chartPolyline = new Polyline
+            var chartPolyline = new Polyline
             {
                 Stroke = ValueLineStrokeBrush,
                 StrokeThickness = ValueLineStrokeThickness
