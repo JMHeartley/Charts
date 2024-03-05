@@ -16,6 +16,8 @@ namespace Controls
     {
         private const int X_AXIS_TEXT_BLOCK_TOP_MARGIN = 5;
 
+        private const int Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN = 10;
+
         public static readonly DependencyProperty ValuesProperty =
             DependencyProperty.Register(nameof(Values), typeof(ICollection<LineValue>), typeof(LineChart));
 
@@ -215,7 +217,7 @@ namespace Controls
                 ChartCanvas.Children.Add(textBlock);
 
                 var textBlockEstimatedSize = EstimateSize(textBlock);
-                Canvas.SetLeft(textBlock, line.X1 - 30);
+                Canvas.SetLeft(textBlock, line.X1 - textBlockEstimatedSize.Width - Y_AXIS_TEXT_BLOCK_RIGHT_MARGIN);
                 Canvas.SetTop(textBlock, yPoint - textBlockEstimatedSize.Height / 2);
 
                 yPoint -= interval;
