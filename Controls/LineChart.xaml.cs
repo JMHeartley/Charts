@@ -236,23 +236,21 @@ namespace Controls
                 Canvas.SetTop(textBlock, currentYPosition - textBlockEstimatedSize.Height / 2);
             }
 
+            var xValueToPositionRatio = chartInnerWidth / xMaxValue;
+            var yValueToPositionRatio = chartInnerHeight / yMaxValue;
             var chartPolyline = new Polyline
             {
                 Stroke = ValueLineStrokeBrush,
-                StrokeThickness = ValueLineStrokeThickness
+                StrokeThickness = ValueLineStrokeThickness,
+                Points = new PointCollection(Values.Select(value =>
+                    new Point
+                    {
+                        X = origin.X + value.X * xValueToPositionRatio,
+                        Y = origin.Y - value.Y * yValueToPositionRatio
+                    })
+                )
             };
             ChartCanvas.Children.Add(chartPolyline);
-
-            var xValueToPositionRatio = chartInnerWidth / xMaxValue;
-            var yValueToPositionRatio = chartInnerHeight / yMaxValue;
-            foreach (var value in Values)
-            {
-                chartPolyline.Points.Add(new Point
-                {
-                    X = origin.X + value.X * xValueToPositionRatio,
-                    Y = origin.Y - value.Y * yValueToPositionRatio
-                });
-            }
         }
 
         private static Size EstimateSize(TextBlock textBlock)
