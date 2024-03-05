@@ -63,8 +63,6 @@ namespace Controls
 
             holders = new List<LineHolder>();
 
-            Paint();
-
             SizeChanged += (sender, e) => Paint();
         }
 
