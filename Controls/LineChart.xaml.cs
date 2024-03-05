@@ -115,6 +115,9 @@ namespace Controls
 
         public void Paint()
         {
+            ChartCanvas.Children.Clear();
+            holders.Clear();
+
             if (ActualWidth <= 0
                 || ActualHeight <= 0
                 || Values is null
@@ -123,8 +126,6 @@ namespace Controls
                 return;
             }
 
-            ChartCanvas.Children.Clear();
-            holders.Clear();
 
             // axis lines
             var xAxisLine = new Line
