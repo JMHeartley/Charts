@@ -238,7 +238,7 @@ namespace Controls
 
             var xValueToPositionRatio = chartInnerWidth / xMaxValue;
             var yValueToPositionRatio = chartInnerHeight / yMaxValue;
-            var chartPolyline = new Polyline
+            var valueLine = new Polyline
             {
                 Stroke = ValueLineStrokeBrush,
                 StrokeThickness = ValueLineStrokeThickness,
@@ -250,7 +250,7 @@ namespace Controls
                     })
                 )
             };
-            ChartCanvas.Children.Add(chartPolyline);
+            ChartCanvas.Children.Add(valueLine);
         }
 
         private static Size EstimateSize(TextBlock textBlock)
