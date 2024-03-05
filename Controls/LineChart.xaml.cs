@@ -28,6 +28,9 @@ namespace Controls
         public static readonly DependencyProperty GridLineStrokeThicknessProperty =
             DependencyProperty.Register(nameof(GridLineStrokeThickness), typeof(double), typeof(LineChart));
 
+        public static readonly DependencyProperty GridLineOpacityProperty =
+            DependencyProperty.Register(nameof(GridLineOpacity), typeof(double), typeof(LineChart));
+
         private readonly List<LineHolder> holders;
         private readonly double interval = 100;
         private readonly List<LineValue> values;
@@ -44,6 +47,7 @@ namespace Controls
             AxisStrokeThickness = 1;
             GridLineStrokeBrush = Brushes.LightGray;
             GridLineStrokeThickness = 10;
+            GridLineOpacity = 1;
 
             InitializeComponent();
 
@@ -83,6 +87,12 @@ namespace Controls
         {
             get => (double)GetValue(GridLineStrokeThicknessProperty);
             set => SetValue(GridLineStrokeThicknessProperty, value);
+        }
+
+        public double GridLineOpacity
+        {
+            get => (double)GetValue(GridLineOpacityProperty);
+            set => SetValue(GridLineOpacityProperty, value);
         }
 
         public void Paint()
@@ -138,7 +148,7 @@ namespace Controls
                     Y2 = ActualHeight - yAxisStart,
                     Stroke = GridLineStrokeBrush,
                     StrokeThickness = GridLineStrokeThickness,
-                    Opacity = 1
+                    Opacity = GridLineOpacity
                 };
 
                 ChartCanvas.Children.Add(line);
@@ -172,7 +182,7 @@ namespace Controls
                     Y2 = yPoint,
                     Stroke = GridLineStrokeBrush,
                     StrokeThickness = GridLineStrokeThickness,
-                    Opacity = 1
+                    Opacity = GridLineOpacity
                 };
 
                 ChartCanvas.Children.Add(line);
