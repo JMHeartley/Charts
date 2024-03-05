@@ -46,161 +46,163 @@ namespace Controls
 
         public void Paint()
         {
-            if (ActualWidth > 0 && ActualHeight > 0)
+            if (ActualWidth <= 0 || ActualHeight <= 0)
             {
-                ChartCanvas.Children.Clear();
-                holders.Clear();
+                return;
+            }
 
-                // axis lines
-                xAxisLine = new Line
+            ChartCanvas.Children.Clear();
+            holders.Clear();
+
+            // axis lines
+            xAxisLine = new Line
+            {
+                X1 = xAxisStart,
+                Y1 = ActualHeight - yAxisStart,
+                X2 = ActualWidth - xAxisStart,
+                Y2 = ActualHeight - yAxisStart,
+                Stroke = Brushes.LightGray,
+                StrokeThickness = 1
+            };
+            yAxisLine = new Line
+            {
+                X1 = xAxisStart,
+                Y1 = yAxisStart - 50,
+                X2 = xAxisStart,
+                Y2 = ActualHeight - yAxisStart,
+                Stroke = Brushes.LightGray,
+                StrokeThickness = 1
+            };
+
+            ChartCanvas.Children.Add(xAxisLine);
+            ChartCanvas.Children.Add(yAxisLine);
+
+            origin = new Point(xAxisLine.X1, yAxisLine.Y2);
+
+            var xTextBlock0 = new TextBlock { Text = $"{0}" };
+            ChartCanvas.Children.Add(xTextBlock0);
+            Canvas.SetLeft(xTextBlock0, origin.X);
+            Canvas.SetTop(xTextBlock0, origin.Y + 5);
+
+            // y axis lines
+            var xValue = xAxisStart;
+            var xPoint = origin.X + interval;
+            while (xPoint < xAxisLine.X2)
+            {
+                var line = new Line
                 {
-                    X1 = xAxisStart,
-                    Y1 = ActualHeight - yAxisStart,
-                    X2 = ActualWidth - xAxisStart,
-                    Y2 = ActualHeight - yAxisStart,
-                    Stroke = Brushes.LightGray,
-                    StrokeThickness = 1
-                };
-                yAxisLine = new Line
-                {
-                    X1 = xAxisStart,
+                    X1 = xPoint,
                     Y1 = yAxisStart - 50,
-                    X2 = xAxisStart,
+                    X2 = xPoint,
                     Y2 = ActualHeight - yAxisStart,
                     Stroke = Brushes.LightGray,
-                    StrokeThickness = 1
+                    StrokeThickness = 10,
+                    Opacity = 1
                 };
 
-                ChartCanvas.Children.Add(xAxisLine);
-                ChartCanvas.Children.Add(yAxisLine);
+                ChartCanvas.Children.Add(line);
 
-                origin = new Point(xAxisLine.X1, yAxisLine.Y2);
+                var textBlock = new TextBlock { Text = $"{xValue}" };
 
-                var xTextBlock0 = new TextBlock { Text = $"{0}" };
-                ChartCanvas.Children.Add(xTextBlock0);
-                Canvas.SetLeft(xTextBlock0, origin.X);
-                Canvas.SetTop(xTextBlock0, origin.Y + 5);
+                ChartCanvas.Children.Add(textBlock);
+                Canvas.SetLeft(textBlock, xPoint - 12.5);
+                Canvas.SetTop(textBlock, line.Y2 + 5);
 
-                // y axis lines
-                var xValue = xAxisStart;
-                var xPoint = origin.X + interval;
-                while (xPoint < xAxisLine.X2)
+                xPoint += interval;
+                xValue += interval;
+            }
+
+
+            var yTextBlock0 = new TextBlock { Text = $"{0}" };
+            ChartCanvas.Children.Add(yTextBlock0);
+            Canvas.SetLeft(yTextBlock0, origin.X - 20);
+            Canvas.SetTop(yTextBlock0, origin.Y - 10);
+
+            // x axis lines
+            var yValue = yAxisStart;
+            var yPoint = origin.Y - interval;
+            while (yPoint > yAxisLine.Y1)
+            {
+                var line = new Line
                 {
-                    var line = new Line
-                    {
-                        X1 = xPoint,
-                        Y1 = yAxisStart - 50,
-                        X2 = xPoint,
-                        Y2 = ActualHeight - yAxisStart,
-                        Stroke = Brushes.LightGray,
-                        StrokeThickness = 10,
-                        Opacity = 1
-                    };
+                    X1 = xAxisStart,
+                    Y1 = yPoint,
+                    X2 = ActualWidth - xAxisStart,
+                    Y2 = yPoint,
+                    Stroke = Brushes.LightGray,
+                    StrokeThickness = 10,
+                    Opacity = 1
+                };
 
-                    ChartCanvas.Children.Add(line);
+                ChartCanvas.Children.Add(line);
 
-                    var textBlock = new TextBlock { Text = $"{xValue}" };
+                var textBlock = new TextBlock { Text = $"{yValue}" };
+                ChartCanvas.Children.Add(textBlock);
+                Canvas.SetLeft(textBlock, line.X1 - 30);
+                Canvas.SetTop(textBlock, yPoint - 10);
 
-                    ChartCanvas.Children.Add(textBlock);
-                    Canvas.SetLeft(textBlock, xPoint - 12.5);
-                    Canvas.SetTop(textBlock, line.Y2 + 5);
+                yPoint -= interval;
+                yValue += interval;
+            }
 
-                    xPoint += interval;
-                    xValue += interval;
-                }
-
-
-                var yTextBlock0 = new TextBlock { Text = $"{0}" };
-                ChartCanvas.Children.Add(yTextBlock0);
-                Canvas.SetLeft(yTextBlock0, origin.X - 20);
-                Canvas.SetTop(yTextBlock0, origin.Y - 10);
-
-                // x axis lines
-                var yValue = yAxisStart;
-                var yPoint = origin.Y - interval;
+            // connections
+            double x = 0, y = 0;
+            xPoint = origin.X;
+            yPoint = origin.Y;
+            while (xPoint < xAxisLine.X2)
+            {
                 while (yPoint > yAxisLine.Y1)
                 {
-                    var line = new Line
+                    var holder = new LineHolder
                     {
-                        X1 = xAxisStart,
-                        Y1 = yPoint,
-                        X2 = ActualWidth - xAxisStart,
-                        Y2 = yPoint,
-                        Stroke = Brushes.LightGray,
-                        StrokeThickness = 10,
-                        Opacity = 1
+                        X = x,
+                        Y = y,
+                        Point = new Point(xPoint, yPoint)
                     };
 
-                    ChartCanvas.Children.Add(line);
-
-                    var textBlock = new TextBlock { Text = $"{yValue}" };
-                    ChartCanvas.Children.Add(textBlock);
-                    Canvas.SetLeft(textBlock, line.X1 - 30);
-                    Canvas.SetTop(textBlock, yPoint - 10);
+                    holders.Add(holder);
 
                     yPoint -= interval;
-                    yValue += interval;
+                    y += interval;
                 }
 
-                // connections
-                double x = 0, y = 0;
-                xPoint = origin.X;
+                xPoint += interval;
                 yPoint = origin.Y;
-                while (xPoint < xAxisLine.X2)
+                x += 100;
+                y = 0;
+            }
+
+            // polyline
+            chartPolyline = new Polyline
+            {
+                Stroke = new SolidColorBrush(Color.FromRgb(r: 68, g: 114, b: 196)),
+                StrokeThickness = 10
+            };
+            ChartCanvas.Children.Add(chartPolyline);
+
+            // showing where are the connections points
+            foreach (var holder in holders)
+            {
+                var oEllipse = new Ellipse
                 {
-                    while (yPoint > yAxisLine.Y1)
-                    {
-                        var holder = new LineHolder
-                        {
-                            X = x,
-                            Y = y,
-                            Point = new Point(xPoint, yPoint)
-                        };
-
-                        holders.Add(holder);
-
-                        yPoint -= interval;
-                        y += interval;
-                    }
-
-                    xPoint += interval;
-                    yPoint = origin.Y;
-                    x += 100;
-                    y = 0;
-                }
-
-                // polyline
-                chartPolyline = new Polyline
-                {
-                    Stroke = new SolidColorBrush(Color.FromRgb(r: 68, g: 114, b: 196)),
-                    StrokeThickness = 10
+                    Fill = Brushes.Red,
+                    Width = 10,
+                    Height = 10,
+                    Opacity = 0
                 };
-                ChartCanvas.Children.Add(chartPolyline);
 
-                // showing where are the connections points
-                foreach (var holder in holders)
+                ChartCanvas.Children.Add(oEllipse);
+                Canvas.SetLeft(oEllipse, holder.Point.X - 5);
+                Canvas.SetTop(oEllipse, holder.Point.Y - 5);
+            }
+
+            // add connection points to polyline
+            foreach (var value in values)
+            {
+                var holder = holders.FirstOrDefault(h => h.X == value.X && h.Y == value.Y);
+                if (holder != null)
                 {
-                    var oEllipse = new Ellipse
-                    {
-                        Fill = Brushes.Red,
-                        Width = 10,
-                        Height = 10,
-                        Opacity = 0
-                    };
-
-                    ChartCanvas.Children.Add(oEllipse);
-                    Canvas.SetLeft(oEllipse, holder.Point.X - 5);
-                    Canvas.SetTop(oEllipse, holder.Point.Y - 5);
-                }
-
-                // add connection points to polyline
-                foreach (var value in values)
-                {
-                    var holder = holders.FirstOrDefault(h => h.X == value.X && h.Y == value.Y);
-                    if (holder != null)
-                    {
-                        chartPolyline.Points.Add(holder.Point);
-                    }
+                    chartPolyline.Points.Add(holder.Point);
                 }
             }
         }
