@@ -7,8 +7,10 @@
 </p>
 
 <p align="center">
-    <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/jmheartley/wpf-chart-controls?color=green">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jmheartley/wpf-chart-controls?color=blue">
+    <a href="https://github.com/JMHeartley/WPF-Chart-Controls/graphs/contributors">
+        <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/jmheartley/wpf-chart-controls?color=green">
+    </a>
 </p>
 
 # 💪🏾 Credits
