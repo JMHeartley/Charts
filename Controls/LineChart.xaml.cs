@@ -159,7 +159,8 @@ namespace Controls
 
             var xTextBlock0 = new TextBlock { Text = "0" };
             ChartCanvas.Children.Add(xTextBlock0);
-            Canvas.SetLeft(xTextBlock0, origin.X);
+            var xTextBlock0EstimatedSize = EstimateSize(xTextBlock0);
+            Canvas.SetLeft(xTextBlock0, origin.X - xTextBlock0EstimatedSize.Width / 2);
             Canvas.SetTop(xTextBlock0, origin.Y + X_AXIS_TEXT_BLOCK_TOP_MARGIN);
 
             // y axis lines
