@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-    <i>A WPF control library for column, line, and pie charts.</i>
+    <i>A WPF control library for responsive column, line, and pie charts.</i>
 </p>
 
 <p align="center">
