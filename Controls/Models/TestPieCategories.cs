@@ -3,6 +3,9 @@ using System.Windows.Media;
 
 namespace WPFChartControls.Models
 {
+    /// <summary>
+    ///     Provides test cases of <see cref="PieCategory" /> instances.
+    /// </summary>
     public static class TestPieCategories
     {
         public static List<PieCategory> Case1 = new List<PieCategory>

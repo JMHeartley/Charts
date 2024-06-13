@@ -70,72 +70,108 @@ namespace WPFChartControls
             SizeChanged += (sender, e) => Paint();
         }
 
+        /// <summary>
+        ///     Gets or sets the collection of line values to be displayed in the chart.
+        /// </summary>
         public ICollection<LineValue> Values
         {
             get => (ICollection<LineValue>)GetValue(ValuesProperty);
             set => SetValue(ValuesProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the brush used to draw the axis strokes.
+        /// </summary>
         public SolidColorBrush AxisStrokeBrush
         {
             get => (SolidColorBrush)GetValue(AxisStrokeBrushProperty);
             set => SetValue(AxisStrokeBrushProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the thickness of the axis strokes.
+        /// </summary>
         public double AxisStrokeThickness
         {
             get => (double)GetValue(AxisStrokeThicknessProperty);
             set => SetValue(AxisStrokeThicknessProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the brush used to draw the grid lines.
+        /// </summary>
         public SolidColorBrush GridLineStrokeBrush
         {
             get => (SolidColorBrush)GetValue(GridLineStrokeBrushProperty);
             set => SetValue(GridLineStrokeBrushProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the thickness of the grid lines.
+        /// </summary>
         public double GridLineStrokeThickness
         {
             get => (double)GetValue(GridLineStrokeThicknessProperty);
             set => SetValue(GridLineStrokeThicknessProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the opacity of the grid lines.
+        /// </summary>
         public double GridLineOpacity
         {
             get => (double)GetValue(GridLineOpacityProperty);
             set => SetValue(GridLineOpacityProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the inner padding of the chart area.
+        /// </summary>
         public Thickness InnerPadding
         {
             get => (Thickness)GetValue(InnerPaddingProperty);
             set => SetValue(InnerPaddingProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the brush used to draw the value line.
+        /// </summary>
         public SolidColorBrush ValueLineStrokeBrush
         {
             get => (SolidColorBrush)GetValue(ValueLineStrokeBrushProperty);
             set => SetValue(ValueLineStrokeBrushProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the thickness of the value line.
+        /// </summary>
         public double ValueLineStrokeThickness
         {
             get => (double)GetValue(ValueLineStrokeThicknessProperty);
             set => SetValue(ValueLineStrokeThicknessProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the number of intervals to be displayed on the X-axis.
+        /// </summary>
         public int XIntervalCount
         {
             get => (int)GetValue(XIntervalCountProperty);
             set => SetValue(XIntervalCountProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the number of intervals to be displayed on the Y-axis.
+        /// </summary>
         public int YIntervalCount
         {
             get => (int)GetValue(YIntervalCountProperty);
             set => SetValue(YIntervalCountProperty, value);
         }
 
+        /// <summary>
+        ///     Paints the line chart on the canvas.
+        /// </summary>
         public void Paint()
         {
             ChartCanvas.Children.Clear();

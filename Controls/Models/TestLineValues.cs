@@ -2,6 +2,9 @@
 
 namespace WPFChartControls.Models
 {
+    /// <summary>
+    ///     Provides test cases of <see cref="LineValue" /> instances.
+    /// </summary>
     public static class TestLineValues
     {
         public static List<LineValue> Case1 = new List<LineValue>

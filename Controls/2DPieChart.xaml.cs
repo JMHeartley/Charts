@@ -32,24 +32,36 @@ namespace WPFChartControls
             InitializeComponent();
         }
 
+        /// <summary>
+        ///     Gets or sets the collection of pie categories to be displayed in the chart.
+        /// </summary>
         public ICollection<PieCategory> Categories
         {
             get => (ICollection<PieCategory>)GetValue(CategoriesProperty);
             set => SetValue(CategoriesProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the brush used to draw the strokes of the pie slices.
+        /// </summary>
         public SolidColorBrush StrokeBrush
         {
             get => (SolidColorBrush)GetValue(StrokeBrushProperty);
             set => SetValue(StrokeBrushProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the thickness of the strokes of the pie slices.
+        /// </summary>
         public double StrokeThickness
         {
             get => (double)GetValue(StrokeThicknessProperty);
             set => SetValue(StrokeThicknessProperty, value);
         }
 
+        /// <summary>
+        ///     Redraws the pie chart based on the current data and size.
+        /// </summary>
         private void RedrawPieChart()
         {
             MainCanvas.Children.Clear();

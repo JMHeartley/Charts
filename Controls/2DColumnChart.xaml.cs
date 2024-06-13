@@ -48,42 +48,65 @@ namespace WPFChartControls
             InitializeComponent();
         }
 
+        /// <summary>
+        ///     Gets or sets the collection of  column items to be displayed in the chart.
+        /// </summary>
         public ICollection<ColumnItem> Items
         {
             get => (ICollection<ColumnItem>)GetValue(ItemsProperty);
             set => SetValue(ItemsProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the brush used to fill the columns.
+        /// </summary>
         public SolidColorBrush ColumnBrush
         {
             get => (SolidColorBrush)GetValue(ColumnBrushProperty);
             set => SetValue(ColumnBrushProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the brush used to draw the axis and lines.
+        /// </summary>
         public SolidColorBrush StrokeBrush
         {
             get => (SolidColorBrush)GetValue(StrokeBrushProperty);
             set => SetValue(StrokeBrushProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the thickness of the axis and lines.
+        /// </summary>
         public double StrokeThickness
         {
             get => (double)GetValue(StrokeThicknessProperty);
             set => SetValue(StrokeThicknessProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the number of intervals to be displayed on the Y-axis.
+        /// </summary>
         public int IntervalCount
         {
             get => (int)GetValue(IntervalCountProperty);
             set => SetValue(IntervalCountProperty, value);
         }
 
+        /// <summary>
+        ///     Gets or sets the inner padding of the chart area.
+        /// </summary>
         public Thickness InnerPadding
         {
             get => (Thickness)GetValue(InnerPaddingProperty);
             set => SetValue(InnerPaddingProperty, value);
         }
 
+        /// <summary>
+        ///     Paints the column chart on the canvas.
+        /// </summary>
+        /// <param name="chartWidth">The width of the chart.</param>
+        /// <param name="chartHeight">The height of the chart.</param>
         private void Paint(double chartWidth, double chartHeight)
         {
             if (chartWidth <= 0

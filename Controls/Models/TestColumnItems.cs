@@ -2,6 +2,9 @@
 
 namespace WPFChartControls.Models
 {
+    /// <summary>
+    ///     Provides test cases of <see cref="ColumnItem" /> instances.
+    /// </summary>
     public static class TestColumnItems
     {
         public static List<ColumnItem> Case1 = new List<ColumnItem>
