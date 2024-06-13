@@ -7,6 +7,9 @@
 </p>
 
 <p align="center">
+    <a href="https://www.nuget.org/packages/WPF-Chart-Controls/">
+        <img alt="NuGet Version" src="https://img.shields.io/nuget/v/WPF-Chart-Controls?color=red">
+    </a>
     <a href="https://github.com/JMHeartley/WPF-Chart-Controls/graphs/contributors">
         <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/jmheartley/wpf-chart-controls?color=green">
     </a>
