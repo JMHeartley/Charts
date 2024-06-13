@@ -133,3 +133,5 @@ xmlns:wpfChartControls="clr-namespace:WPFChartControls;assembly=WPFChartControls
 
 # 💪🏾 Credits
 Thank you to [Kareem Sulthan](https://github.com/kareemsulthan07), who shared [the code](https://github.com/kareemsulthan07/Charts) that became the foundation of WPF Chart Controls.
+
+From there I did lots of refactoring, made each chart adjust sizing when the window height/width is changed, and added documentation comments to increase reusability.
