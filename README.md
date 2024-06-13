@@ -15,6 +15,10 @@
     </a>
 </p>
 
+# 🖥️ Demo
+Check out the [Example](https://github.com/JMHeartley/dTree-Seed/tree/main/Example) project
+
+
 # 2D Column Chart
 ## Usage
 1. Import the namespace
