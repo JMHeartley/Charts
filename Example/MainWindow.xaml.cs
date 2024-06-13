@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using WPFChartControls.Models;
 
 namespace Example
 {
@@ -10,6 +11,8 @@ namespace Example
         public MainWindow()
         {
             InitializeComponent();
+
+            ColumnChart.Items = TestColumnItems.Case4;
         }
     }
 }
