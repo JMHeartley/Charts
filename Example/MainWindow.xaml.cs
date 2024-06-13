@@ -14,6 +14,7 @@ namespace Example
 
             ColumnChart.Items = TestColumnItems.Case4;
             PieChart.Categories = TestPieCategories.Case6;
+            LineChart.Values = TestLineValues.Case3;
         }
     }
 }
