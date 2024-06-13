@@ -19,7 +19,7 @@
 Check out the [Example](https://github.com/JMHeartley/dTree-Seed/tree/main/Example) project
 
 
-# 2D Column Chart
+# 📊 2D Column Chart
 ## Usage
 1. Import the namespace
 ``` xaml
@@ -55,7 +55,7 @@ xmlns:wpfChartControls="clr-namespace:WPFChartControls;assembly=WPFChartControls
 * `TestColumnItems` - provides test case collections of `ColumnItem` instances
 
 
-# 2D Pie Chart
+# 🥧 2D Pie Chart
 ## Usage
 1. Import the namespace
 ``` xaml
@@ -90,7 +90,7 @@ xmlns:wpfChartControls="clr-namespace:WPFChartControls;assembly=WPFChartControls
 * `TestPieCategories` - provides test case collections of `PieCategory` instances
 
 
-# Line Chart
+# 📈 Line Chart
 ## Usage
 1. Import the namespace
 ``` xaml
