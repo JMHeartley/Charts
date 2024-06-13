@@ -13,6 +13,7 @@ namespace Example
             InitializeComponent();
 
             ColumnChart.Items = TestColumnItems.Case4;
+            PieChart.Categories = TestPieCategories.Case6;
         }
     }
 }

@@ -12,5 +12,8 @@
         <TabItem Header="2D Column Chart">
             <wpfChartControls:_2DColumnChart x:Name="ColumnChart" />
         </TabItem>
+        <TabItem Header="2D Pie Chart">
+            <wpfChartControls:_2DPieChart x:Name="PieChart" />
+        </TabItem>
     </TabControl>
 </Window>
