@@ -25,8 +25,8 @@ namespace WPFChartControls
         public static readonly DependencyProperty ColumnBrushProperty =
             DependencyProperty.Register(nameof(ColumnBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
 
-        public static readonly DependencyProperty StrokeProperty =
-            DependencyProperty.Register(nameof(Stroke), typeof(SolidColorBrush), typeof(_2DColumnChart));
+        public static readonly DependencyProperty StrokeBrushProperty =
+            DependencyProperty.Register(nameof(StrokeBrush), typeof(SolidColorBrush), typeof(_2DColumnChart));
 
         public static readonly DependencyProperty StrokeThicknessProperty =
             DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(_2DColumnChart));
@@ -40,7 +40,7 @@ namespace WPFChartControls
         public _2DColumnChart()
         {
             ColumnBrush = Brushes.Gold;
-            Stroke = Brushes.LightGray;
+            StrokeBrush = Brushes.LightGray;
             StrokeThickness = 1;
             IntervalCount = 8;
             InnerPadding = new Thickness(100);
@@ -60,10 +60,10 @@ namespace WPFChartControls
             set => SetValue(ColumnBrushProperty, value);
         }
 
-        public SolidColorBrush Stroke
+        public SolidColorBrush StrokeBrush
         {
-            get => (SolidColorBrush)GetValue(StrokeProperty);
-            set => SetValue(StrokeProperty, value);
+            get => (SolidColorBrush)GetValue(StrokeBrushProperty);
+            set => SetValue(StrokeBrushProperty, value);
         }
 
         public double StrokeThickness
@@ -139,7 +139,7 @@ namespace WPFChartControls
 
             var yAxisStartLine = new Line
             {
-                Stroke = Stroke,
+                Stroke = StrokeBrush,
                 StrokeThickness = StrokeThickness,
                 X1 = yAxisEndPoint.X,
                 Y1 = yAxisEndPoint.Y,
@@ -150,7 +150,7 @@ namespace WPFChartControls
 
             var yAxisEndLine = new Line
             {
-                Stroke = Stroke,
+                Stroke = StrokeBrush,
                 StrokeThickness = StrokeThickness,
                 X1 = xAxisEndPoint.X,
                 Y1 = xAxisEndPoint.Y,
@@ -174,7 +174,7 @@ namespace WPFChartControls
 
                 var yLine = new Line
                 {
-                    Stroke = Stroke,
+                    Stroke = StrokeBrush,
                     StrokeThickness = StrokeThickness,
                     X1 = origin.X,
                     Y1 = currentYPosition,
