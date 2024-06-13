@@ -82,9 +82,11 @@ xmlns:wpfChartControls="clr-namespace:WPFChartControls;assembly=WPFChartControls
 * `Categories` - collection of `PieCategory` items to be displayed in the chart
 * `StrokeBrush` - brush used to draw the strokes of the pie slices
 * `StrokeThickness` - thickness of the strokes of the pie slices
+* `LegendPosition` - position of the legend relative to the chart
 
 ## Related Objects
 * `PieCategory` - a category in a pie chart with a `Percentage`, `Title`, and `ColorBrush`
+* `LegendPosition` - position of the legend (values: `Top`, `Left`, `Right`, `Bottom`)
 * `TestPieCategories` - provides test case collections of `PieCategory` instances
 
 

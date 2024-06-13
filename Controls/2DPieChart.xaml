@@ -11,15 +11,24 @@
              d:DesignWidth="800">
     <Grid Margin="16">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
 
-        <Canvas Grid.Row="0"
+        <Canvas Grid.Row="1"
+                Grid.Column="1"
                 x:Name="MainCanvas"
                 Margin="0,0,0,8" />
 
-        <ScrollViewer Grid.Row="1"
+        <ScrollViewer Grid.Row="2"
+                      Grid.Column="1"
+                      x:Name="Legend"
                       SizeChanged="LegendColumn_OnSizeChanged"
                       VerticalAlignment="Center"
                       HorizontalAlignment="Center"

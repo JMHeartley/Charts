@@ -23,13 +23,18 @@ namespace WPFChartControls
         public static readonly DependencyProperty StrokeThicknessProperty =
             DependencyProperty.Register(nameof(StrokeThickness), typeof(double), typeof(_2DPieChart));
 
+        public static readonly DependencyProperty LegendPositionProperty =
+            DependencyProperty.Register(nameof(LegendPosition), typeof(LegendPosition), typeof(_2DPieChart));
+
         public _2DPieChart()
         {
             StrokeBrush = Brushes.White;
             StrokeThickness = 5;
             FontSize = 20;
+            LegendPosition = LegendPosition.Right;
 
             InitializeComponent();
+            UpdateLegendPosition();
         }
 
         /// <summary>
@@ -57,6 +62,15 @@ namespace WPFChartControls
         {
             get => (double)GetValue(StrokeThicknessProperty);
             set => SetValue(StrokeThicknessProperty, value);
+        }
+
+        /// <summary>
+        ///     Gets or set the position of the pie chart legend.
+        /// </summary>
+        public LegendPosition LegendPosition
+        {
+            get => (LegendPosition)GetValue(LegendPositionProperty);
+            set => SetValue(LegendPositionProperty, value);
         }
 
         /// <summary>
@@ -181,6 +195,34 @@ namespace WPFChartControls
         {
             // ensure chart is redrawn after legend is populated / size is initialized
             RedrawPieChart();
+        }
+
+        private void UpdateLegendPosition()
+        {
+            switch (LegendPosition)
+            {
+                case LegendPosition.Bottom:
+                    Grid.SetColumn(Legend, value: 1);
+                    Grid.SetRow(Legend, value: 2);
+                    break;
+                case LegendPosition.Left:
+                    Grid.SetColumn(Legend, value: 0);
+                    Grid.SetRow(Legend, value: 1);
+
+                    break;
+                case LegendPosition.Right:
+                    Grid.SetColumn(Legend, value: 2);
+                    Grid.SetRow(Legend, value: 1);
+
+                    break;
+                case LegendPosition.Top:
+                    Grid.SetColumn(Legend, value: 1);
+                    Grid.SetRow(Legend, value: 0);
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException($"{nameof(LegendPosition)} is not a valid value.");
+            }
         }
     }
 }
