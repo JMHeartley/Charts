@@ -19,7 +19,7 @@
 </p>
 
 # 🖥️ Demo
-Check out the [Example](https://github.com/JMHeartley/WPF-Chart-Controls/tree/master/Example) project
+Kareem has a [video demoing and explaining functionality](https://www.youtube.com/watch?v=PRM0cax5eJw) or you can download and check out the charts in the [Example](https://github.com/JMHeartley/WPF-Chart-Controls/tree/master/Example) project.
 
 
 # 📊 2D Column Chart
