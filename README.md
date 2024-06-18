@@ -16,6 +16,9 @@
     <a href="https://github.com/JMHeartley/WPF-Chart-Controls/commits/master/">
         <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jmheartley/wpf-chart-controls?color=blue">
     </a>
+    <a href="/LICENSE">
+        <img alt="MIT License" src="https://img.shields.io/github/license/jmheartley/wpf-chart-controls?color=yellow">
+    </a>
 </p>
 
 # 🖥️ Demo
@@ -138,3 +141,9 @@ xmlns:wpfChartControls="clr-namespace:WPFChartControls;assembly=WPFChartControls
 Thank you to [Kareem Sulthan](https://github.com/kareemsulthan07), who shared [the code](https://github.com/kareemsulthan07/Charts) that became the foundation of WPF Chart Controls.
 
 From there I did lots of refactoring, made each chart adjust sizing when the window height/width is changed, and added documentation comments to increase reusability.
+
+
+## 📃 License
+[The MIT License (MIT)](/LICENSE)
+
+Copyright (c) 2024 Kareem Sulthan, Justin M Heartley
