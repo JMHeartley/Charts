@@ -69,7 +69,7 @@ xmlns:wpfChartControls="clr-namespace:WPFChartControls;assembly=WPFChartControls
 ```
 2. Add chart
 ``` xaml
-<wpfChartControls:_2DColumnChart />
+<wpfChartControls:_2DPieChart />
 ```
 3. Bind data to Items property
     * using code-behind
@@ -104,7 +104,7 @@ xmlns:wpfChartControls="clr-namespace:WPFChartControls;assembly=WPFChartControls
 ```
 2. Add chart
 ``` xaml
-<wpfChartControls:_2DColumnChart />
+<wpfChartControls:LineChart />
 ```
 3. Bind data to Items property
     * using code-behind
