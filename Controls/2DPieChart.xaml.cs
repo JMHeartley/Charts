@@ -34,7 +34,6 @@ namespace WPFChartControls
             LegendPosition = LegendPosition.Right;
 
             InitializeComponent();
-            UpdateLegendPosition();
         }
 
         /// <summary>
@@ -78,6 +77,7 @@ namespace WPFChartControls
         /// </summary>
         private void RedrawPieChart()
         {
+            UpdateLegendPosition();
             MainCanvas.Children.Clear();
 
             var centerX = MainCanvas.ActualWidth / 2;
